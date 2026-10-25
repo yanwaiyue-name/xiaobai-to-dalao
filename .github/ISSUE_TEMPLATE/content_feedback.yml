@@ -1,0 +1,32 @@
+name: "📝 内容纠错与建议"
+description: 教程有错误、链接失效、想加新章节，都在这里提
+labels: ["documentation"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: 类型
+      options:
+        - "内容有错误"
+        - "链接失效（网址打不开）"
+        - "想加新章节 / 新内容"
+        - "其他建议"
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: 涉及的章节 / 文件
+      placeholder: 例如：02 环境部署篇 第 4 章 Java 环境部署
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: 具体说明
+      placeholder: |
+        - 内容错误：哪一步跟着做会出错，正确的做法是什么
+        - 链接失效：失效的网址 + 你确认它打不开的日期
+        - 新章节：你想看到什么内容，为什么
+    validations:
+      required: true

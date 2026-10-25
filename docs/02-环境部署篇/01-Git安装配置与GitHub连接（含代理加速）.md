@@ -87,7 +87,7 @@ ssh -T git@github.com
 **你已经能科学上网的话（强烈推荐）**——给 Git 单独挂代理：
 
 ```powershell
-# 端口改成你客户端的端口！Clash Verge Rev 默认 7897，老版 Clash 是 7890，v2rayN 是 10809
+# 端口改成你客户端的端口！Clash Verge Rev 默认 7897，老版 Clash 是 7890，v2rayN 新版 10808 / 旧版 10809——以客户端设置页显示为准
 git config --global http.proxy http://127.0.0.1:7897
 git config --global https.proxy http://127.0.0.1:7897
 ```

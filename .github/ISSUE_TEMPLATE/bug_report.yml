@@ -1,0 +1,68 @@
+name: "🐛 问题求助（装不上 / 报错 / 连不上）"
+description: 按下面的格式填写，你得到回答的速度会快 10 倍
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        💡 提问前先看过仓库里的这两章吗？大部分报错已有现成答案：
+        - [科学上网篇 · 第 8 章：社区精选问答](../blob/main/docs/01-科学上网篇/08-社区精选问答-真实提问与解法.md)
+        - [环境部署篇 · 第 9 章：社区精选问答](../blob/main/docs/02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.md)
+        - [环境部署篇 · 第 8 章：报错急救手册](../blob/main/docs/02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.md)
+  - type: dropdown
+    id: chapter
+    attributes:
+      label: 你卡在哪一章？
+      options:
+        - "01 科学上网篇"
+        - "02 环境部署篇"
+        - "99 进阶篇"
+        - "README / 其他"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: 操作系统
+      options:
+        - "Windows 11"
+        - "Windows 10"
+        - "macOS"
+        - "安卓"
+        - "iOS"
+        - "其他"
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: 报错原文（完整复制粘贴，别截图抠字）
+      placeholder: |
+        例如：
+        'python' 不是内部或外部命令，也不是可运行的程序或批处理文件。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤（我做了什么 → 出现了什么）
+      placeholder: |
+        1. 按照 02 篇第 2 章安装 Python，勾选了 Add to PATH
+        2. 新开 PowerShell 输入 python --version
+        3. 实际结果：弹出微软商店
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: 已经尝试过什么方法（没试过就写"还没试"）
+      placeholder: 重启过电脑 / 重装过一次 Python / 换过节点……
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 提交前自检
+      options:
+        - label: 我搜索过仓库现有 Issue，没有找到相同问题
+          required: true
+        - label: 我已按"报错急救手册 / 社区精选问答"章节尝试过排查
+          required: true

@@ -1,0 +1,47 @@
+name: 链接每周体检
+
+on:
+  schedule:
+    # 每周六 UTC 03:00 = 北京时间周六 11:00（与姊妹项目 airport-nav 的体检日对齐）
+    - cron: "0 3 * * 6"
+  workflow_dispatch: {}
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 扫描全仓库链接（lychee）
+        uses: lycheeverse/lychee-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: >-
+            --no-progress
+            --timeout 20
+            --max-retries 2
+            --accept '200..=299,403,429'
+            --exclude '.*127\.0\.0\.1.*'
+            --exclude '.*localhost.*'
+            --exclude '.*example\.com.*'
+            --exclude '.*gh-proxy\.com.*'
+            './**/*.md'
+          output: lychee-report.md
+          fail: true
+
+      - name: 体检通过
+        if: success()
+        run: echo "全部链接存活，本次体检通过 ✅"
+
+      - name: 发现死链 → 自动开 Issue 汇报
+        if: failure()
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "🔗 每周链接体检：发现失效链接，需要人工确认"
+          content-filepath: ./lychee-report.md
