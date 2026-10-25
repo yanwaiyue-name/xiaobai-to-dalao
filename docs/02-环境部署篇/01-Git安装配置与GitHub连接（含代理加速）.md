@@ -92,6 +92,14 @@ git config --global http.proxy http://127.0.0.1:7897
 git config --global https.proxy http://127.0.0.1:7897
 ```
 
+💡 进阶技巧（社区高频问答，详见第 9 章）：**只让 GitHub 走代理**——公司内网 GitLab 不受影响，代理软件时开时关也不影响其他仓库：
+
+```powershell
+git config --global http.https://github.com.proxy http://127.0.0.1:7897
+```
+
+撤销这条：`git config --global --unset http.https://github.com.proxy`
+
 ⚠️ 代理软件没开的时候，Git 会因此连不上网。不用代理的那天记得撤销：
 
 ```powershell
