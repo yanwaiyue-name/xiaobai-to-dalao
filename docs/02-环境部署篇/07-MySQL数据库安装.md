@@ -93,7 +93,7 @@ Start-Service MySQL80               # 起
 | 现象 | 解法 |
 |---|---|
 | 安装器卡在 Starting the server | 3306 被占（第 8 章）或之前残留过 MySQL → 服务里卸干净旧版再装 |
-| `Access denied for user 'root'` | 密码输错；或密码忘了 → 搜"MySQL8 root 密码重置"走 skip-grant-tables 流程 |
+| `Access denied for user 'root'` | 密码输错；或密码忘了 → 搜"MySQL8 root 密码重置"，照教程一步步来（思路是先跳过密码验证进去，再设个新密码） |
 | `Can't connect... (10061)` | 服务没起来：`Start-Service MySQL80` |
 | 老程序连不上报 `caching_sha2_password` | 认证方式太老，用 Workbench 执行：`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你的密码';` |
 | 命令行里中文乱码 | 连接后执行 `SET NAMES utf8mb4;`，建库建表统一用 utf8mb4 |

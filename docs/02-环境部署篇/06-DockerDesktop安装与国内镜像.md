@@ -85,6 +85,8 @@ docker run hello-world
 docker run -d -p 8080:80 --name my-nginx nginx
 ```
 
+💡 `-p 8080:80` 的意思：把你电脑的 8080 号"门牌"接到容器的 80 号门上，以后访问本机 8080 就等于访问这个容器。
+
 浏览器打开 **http://localhost:8080**，看到 Nginx 欢迎页 = 你在本地跑起了一个网站服务器。用完清理：
 
 ```powershell

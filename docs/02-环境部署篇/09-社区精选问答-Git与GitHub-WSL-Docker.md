@@ -21,7 +21,7 @@ git pull --rebase origin main
 git push origin main
 ```
 
-实在确定要覆盖远程（团队协作中慎用）：`git push --force-with-lease`，比裸 `--force` 安全。
+实在确定要覆盖远程（团队协作中慎用）：用 `git push --force-with-lease`，比直接用 `git push --force` 多一道保险——万一远程在这期间又有了新提交，它会拒绝执行，防止你误删别人的工作。
 
 > 📎 出处：[GitHub 官方文档：处理非快进错误](https://docs.github.com/zh/get-started/using-git/dealing-with-non-fast-forward-errors) ｜ [Stack Overflow: What does "non-fast-forward updates were rejected" mean](https://stackoverflow.com/questions/4684352/what-does-git-push-non-fast-forward-updates-were-rejected-mean) ｜ [CSDN：git push rejected 解决](https://blog.csdn.net/index20001/article/details/99764558) ｜ [知乎：git push 出现 ! [rejected] 错误](https://zhuanlan.zhihu.com/p/707863606)
 

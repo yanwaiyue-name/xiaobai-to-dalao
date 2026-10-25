@@ -49,9 +49,9 @@ git config --global --list
 
 ## 第 3 步：让 GitHub 认识你（二选一）
 
-### 方式 A：HTTPS + 令牌（最简单，推荐小白）
+### 方式 A：HTTPS + 专用钥匙 Token（最简单，推荐小白）
 
-现在 GitHub 不让 HTTPS 提交时用密码了，要用 **Personal Access Token**：
+现在 GitHub 不让 HTTPS 提交时填登录密码了，要改用一把"专用钥匙"：**Personal Access Token**（个人访问令牌——一把只能用来操作仓库的钥匙，比主密码更安全）：
 
 1. GitHub → 右上角头像 → Settings → Developer settings → Personal access tokens → **Tokens (classic)**。
 2. Generate new token (classic) → 备注随便填 → 勾选 `repo` → 生成。
