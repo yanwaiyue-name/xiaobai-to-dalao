@@ -97,7 +97,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ## 💡 多版本共存怎么办
 
 - 官方安装包多装几个版本时，用启动器调用：`py -3.12 hello.py`、`py -3.13 hello.py`（`py --list` 查看装了哪些）。
-- 需要频繁切换版本搞 AI / 数据科学？直接上 **Miniconda**（https://docs.conda.io/en/latest/miniconda.html），`conda create -n py312 python=3.12` 一条命令一个环境。新手先不装，等真有需要再说。
+- 需要频繁切换版本搞 AI / 数据科学？直接上 **Miniconda**（[下载页](https://docs.conda.io/en/latest/miniconda.html)），`conda create -n py312 python=3.12` 一条命令一个环境。新手先不装，等真有需要再说。
 
 ## 常见坑
 
