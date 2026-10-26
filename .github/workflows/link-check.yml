@@ -15,19 +15,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 检出仓库
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
+      # ⚠️ 这条注释必须留在这里（YAML 层），绝不能写进下面的 args 里。
+      # lychee-action 内部执行的是 `eval lychee ... $ARGS`，
+      # args 中出现 # 会被 shell 当成注释开头，把后面所有参数
+      # （包括扫描路径 './**/*.md'）全部吃掉，体检必然报
+      # "required arguments were not provided: <inputs>" 并失败。
       - name: 扫描全仓库链接（lychee）
+        id: lychee
         uses: lycheeverse/lychee-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          # 403/429/521 多为反爬或限流（CSDN、工信部备案站对 CI 常返回 521），
+          # 视作“无法判定”而不是死链，避免每周误报
           args: >-
             --no-progress
             --timeout 20
             --max-retries 2
-            # 403/429/521 多为反爬或限流（CSDN、工信部备案站对 CI 常返回 521），
-            # 视作"无法判定"而不是死链，避免每周误报
             --accept '200..=299,403,429,521'
             --exclude '.*127\.0\.0\.1.*'
             --exclude '.*localhost.*'
@@ -46,9 +52,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # 防御：如果是工作流自身没跑起来（参数错、lychee 下载失败等），
+          # 报告里不会有链接清单。这时不开 Issue，只让流水线红掉，
+          # 避免像 2026-10-26 那次那样产出一个内容为空的假 Issue。
+          if [ ! -s lychee-report.md ] || [ "$(wc -c < lychee-report.md)" -lt 200 ]; then
+            echo "::error::lychee 没有产出有效报告，本次是工作流自身出错（不是死链），请看上方日志。"
+            exit 1
+          fi
           title="🔗 每周链接体检：发现失效链接，需要人工确认"
           number=$(gh issue list --state open --limit 100 --json number,title \
-            --jq ".[] | select(.title == \"$title\") | .number" | head -n 1)
+            --jq ".[] | select(.title == \"$title\") | .number" | head -n 1 || true)
           if [ -n "$number" ]; then
             gh issue comment "$number" --body-file lychee-report.md
           else
