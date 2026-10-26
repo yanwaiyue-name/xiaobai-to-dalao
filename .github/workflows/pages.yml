@@ -1,0 +1,72 @@
+name: Build docs site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'README.md'
+      - 'scripts/build-site.ps1'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: 生成静态站点
+        shell: pwsh
+        run: ./scripts/build-site.ps1
+
+      - name: 校验站内链接
+        shell: pwsh
+        run: |
+          $site = Join-Path $PWD 'site'
+          $broken = @()
+          Get-ChildItem $site -Recurse -Filter '*.html' | ForEach-Object {
+            $file = $_
+            $html = Get-Content $file.FullName -Raw -Encoding UTF8
+            foreach ($m in [regex]::Matches($html, 'href="([^"]+)"')) {
+              $h = $m.Groups[1].Value
+              if ($h -match '^(https?:|mailto:|#)') { continue }
+              if (-not (Test-Path -LiteralPath (Join-Path $file.DirectoryName $h))) {
+                $broken += ($file.Name + ' -> ' + $h)
+              }
+            }
+          }
+          if ($broken.Count -gt 0) {
+            $broken | Select-Object -First 20 | ForEach-Object { Write-Host "断链: $_" }
+            Write-Error ("站内共有 " + $broken.Count + " 条断链")
+            exit 1
+          }
+          Write-Host '站内链接校验通过'
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

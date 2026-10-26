@@ -15,3 +15,6 @@ desktop.ini
 
 # 插件状态目录
 .mimosa/
+
+# 站点构建产物（由 scripts/build-site.ps1 生成，CI 里现算现发）
+site/

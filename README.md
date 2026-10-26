@@ -7,7 +7,7 @@
 > 网上的教程总默认你"已经会了"，这个仓库默认你"什么都不会"。
 > 每一章只回答三个问题：**装什么、怎么装、怎么确认装好了**。
 
-![License](https://img.shields.io/badge/license-MIT-green) ![Platform](https://img.shields.io/badge/平台-Windows优先-blue) ![Status](https://img.shields.io/badge/状态-持续更新-orange)
+[![在线教程](https://img.shields.io/badge/📖_在线阅读-教程站-2ea44f?style=flat)](https://yanwaiyue-name.github.io/xiaobai-to-dalao/) [![License](https://img.shields.io/badge/license-MIT-green) ![Platform](https://img.shields.io/badge/平台-Windows优先-blue) ![Status](https://img.shields.io/badge/状态-持续更新-orange)
 
 </div>
 
