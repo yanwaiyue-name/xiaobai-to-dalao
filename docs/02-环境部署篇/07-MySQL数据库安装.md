@@ -22,7 +22,7 @@ Windows 10 / 11。⚠️ 如果 3306 端口被别的软件占了（比如之前�
 
 运行安装器，类型选 **Custom**（自定义，只装需要的）：
 
-1. 选中 **MySQL Server 8.x (x64)** 移到右边。
+1. 选中 **MySQL Server 8.x (x64)** 移到右边（优先选 **8.4 LTS**，长期支持版）。
 2. 再加一个 **MySQL Workbench**（官方可视化工具）。
 3. Next → Execute 开始安装。
 
@@ -33,7 +33,7 @@ Windows 10 / 11。⚠️ 如果 3306 端口被别的软件占了（比如之前�
 | Type and Networking | 默认（端口 **3306**） |
 | Authentication Method | 默认（强加密）。⚠️ 如果后面老程序连不上，再回来改"Legacy" |
 | **Accounts and Roles** | **设置 root 密码——这是数据库最高管理员密码，务必记牢** |
-| Windows Service | 默认（服务名 MySQL80，开机自启） |
+| Windows Service | 默认（开机自启）。服务名以向导里显示的为准，下文命令里的 `MySQL80` 换成你的实际服务名 |
 | Apply | Execute → Finish |
 
 ## ✅ 验证
@@ -79,7 +79,7 @@ docker run -d --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
 
 ## 服务管理速查
 
-MySQL 装完就是个 Windows 服务（名字 MySQL80），开机自启。手动管理：
+MySQL 装完就是个 Windows 服务（名字以安装向导为准，例如 MySQL80），开机自启。手动管理：
 
 ```powershell
 # 管理员 PowerShell
@@ -95,7 +95,7 @@ Start-Service MySQL80               # 起
 | 安装器卡在 Starting the server | 3306 被占（第 8 章）或之前残留过 MySQL → 服务里卸干净旧版再装 |
 | `Access denied for user 'root'` | 密码输错；或密码忘了 → 搜"MySQL8 root 密码重置"，照教程一步步来（思路是先跳过密码验证进去，再设个新密码） |
 | `Can't connect... (10061)` | 服务没起来：`Start-Service MySQL80` |
-| 老程序连不上报 `caching_sha2_password` | 认证方式太老，用 Workbench 执行：`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你的密码';` |
+| 老程序连不上报 `caching_sha2_password` | 首选**升级老程序的数据库驱动**，别降安全性。实在要降级认证，MySQL 8.0 可执行：`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你的密码';`；⚠️ **MySQL 8.4 起该插件默认禁用**，这条命令会报错，需要额外开启插件，不建议新手折腾 |
 | 命令行里中文乱码 | 连接后执行 `SET NAMES utf8mb4;`，建库建表统一用 utf8mb4 |
 
 ## ✅ 验证全部完成

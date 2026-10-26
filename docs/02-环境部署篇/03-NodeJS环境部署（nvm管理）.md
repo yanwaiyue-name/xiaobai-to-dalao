@@ -45,18 +45,21 @@ nvm npm_mirror https://npmmirror.com/mirrors/npm/
 
 ```powershell
 nvm list available        # 看看有哪些版本（找 LTS 标记的）
-nvm install 20.18.0       # 装 LTS 大版本（版本号以 list 里最新 LTS 为准）
-nvm use 20.18.0           # 启用它
+nvm install lts           # 直接装当前最新 LTS，不用背版本号
+nvm list                  # 看刚装好的具体版本号
+nvm use 22.14.0           # 启用它：把 22.14.0 换成你 nvm list 里实际的版本号
 ```
 
 ## ✅ 验证
 
 ```powershell
-node --version    # v20.18.0
-npm --version     # 10.x.x
+node --version    # 显示 v22.x / v24.x 等 LTS 版本号即可
+npm --version     # 有版本号即可，不必和教程一致
 ```
 
-💡 以后新项目来了：`nvm install 22.x.x` 装新版本，`nvm use` 一秒切换，互不影响。
+⚠️ 别照抄老教程装 Node 20：它已在 2026 年 4 月停止维护。新装就用上面的 `nvm install lts`。
+
+💡 以后想升级：再跑一次 `nvm install lts`，然后 `nvm use 新版本号`，旧版本还在，随时切回。
 
 ## 第 5 步：npm 换国内源
 

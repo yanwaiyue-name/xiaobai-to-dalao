@@ -51,6 +51,8 @@ git config --global --list
 
 ### 方式 A：HTTPS + 专用钥匙 Token（最简单，推荐小白）
 
+💡 先看一眼：Git for Windows 默认带 **Git Credential Manager**，第一次 `git push` 很可能直接弹出**浏览器授权窗口**，登录授权一次就完事——那样就不用管下面的 token 了。只有弹出来的是"用户名 + 密码"输入框时，才需要走方式 A。
+
 现在 GitHub 不让 HTTPS 提交时填登录密码了，要改用一把"专用钥匙"：**Personal Access Token**（个人访问令牌——一把只能用来操作仓库的钥匙，比主密码更安全）：
 
 1. GitHub → 右上角头像 → Settings → Developer settings → Personal access tokens → **Tokens (classic)**。
@@ -87,7 +89,7 @@ ssh -T git@github.com
 **你已经能科学上网的话（强烈推荐）**——给 Git 单独挂代理：
 
 ```powershell
-# 端口改成你客户端的端口！Clash Verge Rev 默认 7897，老版 Clash 是 7890，v2rayN 新版 10808 / 旧版 10809——以客户端设置页显示为准
+# 端口改成你客户端的 HTTP 端口！Clash Verge Rev 默认 7897，老版 Clash 是 7890；v2rayN 是 socks 10808 / http 10809，这里要填 10809——以客户端设置页显示为准
 git config --global http.proxy http://127.0.0.1:7897
 git config --global https.proxy http://127.0.0.1:7897
 ```

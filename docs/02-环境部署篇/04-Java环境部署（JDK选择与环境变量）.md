@@ -15,8 +15,9 @@
 | 版本 | 定位 | 建议 |
 |---|---|---|
 | JDK 8 | 老项目钉子户 | 只在跑别人老项目时装 |
-| JDK 11 / 17 | 企业主流 | 跟课程/教程走 |
-| **JDK 21** | 最新 LTS（长期支持） | **新学习项目直接装这个** |
+| JDK 11 / 17 | 老企业项目常见 | 跟课程/教程走 |
+| JDK 21 | 上一个 LTS，生态成熟 | 课程或公司指定 21 就装 21 |
+| **JDK 25** | 最新 LTS（长期支持） | **新学习项目直接装这个** |
 
 💡 LTS = Long Term Support，官方长期维护的版本，**没有特殊理由就装最新 LTS**。
 
@@ -28,17 +29,17 @@
 | Oracle JDK | 注意授权 | 官方出品，商用授权有坑，学习用也行 |
 | Amazon Corretto | 免费 | 亚马逊出品，同样可靠 |
 
-## 第 1 步：下载 Temurin JDK 21
+## 第 1 步：下载 Temurin JDK 25
 
-1. 打开 **https://adoptium.net**，页面会自动识别系统，直接点下载按钮（`.msi` 安装包）。
-2. ⚠️ 国内直连 adoptium 慢的话：清华镜像 **https://mirrors.tuna.tsinghua.edu.cn/Adoptium/** → `21/jdk/x64/windows/` → 下 `.msi`。
+1. 打开 **https://adoptium.net**，页面会自动识别系统，直接点下载按钮（`.msi` 安装包）。页面上如果默认不是 25，手动在版本下拉里选 **25 - LTS**。
+2. ⚠️ 国内直连 adoptium 慢的话：清华镜像 **https://mirrors.tuna.tsinghua.edu.cn/Adoptium/** → `25/jdk/x64/windows/` → 下 `.msi`。
 
 ## 第 2 步：安装（记住安装路径）
 
 双击 `.msi` 安装：
 
-- 组件页面把 `Set JAVA_HOME variable` 设为**整行安装**（这步能自动帮你配好环境变量）。
-- 安装路径默认类似 `C:\Program Files\Eclipse Adoptium\jdk-21.x.x-hotspot\`，**复制存好**。
+- 组件页面找到 `Set JAVA_HOME variable` 这一项，点它前面的下拉图标，选 **Will be installed on local hard drive**（安装到本地硬盘，图标不能是红叉）。这样装完它会自动帮你配好 `JAVA_HOME`。
+- 安装路径默认类似 `C:\Program Files\Eclipse Adoptium\jdk-25.x.x-hotspot\`，**复制存好**。
 
 ## 第 3 步：配置环境变量
 
@@ -47,7 +48,7 @@
 1. Win 键搜"**编辑系统环境变量**" → 环境变量。
 2. **系统变量**区 → 新建：
    - 变量名：`JAVA_HOME`
-   - 变量值：`C:\Program Files\Eclipse Adoptium\jdk-21.x.x-hotspot`（你实际的路径）
+   - 变量值：`C:\Program Files\Eclipse Adoptium\jdk-25.x.x-hotspot`（你实际的路径）
 3. 找到系统变量里的 `Path` → 编辑 → **新建**一行：
    - `%JAVA_HOME%\bin`
 4. 一路确定保存。
@@ -57,8 +58,8 @@
 **新开** PowerShell（改完环境变量必须新开窗口）：
 
 ```powershell
-java -version     # 输出 openjdk version "21.x.x"
-javac -version    # 输出 javac 21.x.x（有这个说明编译器也在）
+java -version     # 输出 openjdk version "25.x.x"
+javac -version    # 输出 javac 25.x.x（有这个说明编译器也在）
 echo $env:JAVA_HOME   # 输出你配的路径
 ```
 
@@ -84,7 +85,7 @@ java Hello          # 运行，输出 Hello, Java!
 
 ## 💡 多版本共存
 
-要同时有 JDK 8 和 21？装两份、`JAVA_HOME` 指向哪个用哪个。真正开发后建议用 IDEA / VS Code 的 JDK 管理功能按项目切换，命令行层不用折腾。
+要同时有 JDK 8 和 25？装两份、`JAVA_HOME` 指向哪个用哪个。真正开发后建议用 IDEA / VS Code 的 JDK 管理功能按项目切换，命令行层不用折腾。
 
 ## 常见坑
 

@@ -55,7 +55,7 @@ docker run hello-world
 
 ⚠️ **重要认知**：加速地址经常失效（历史原因，你懂的），**别背具体网址，学会配置方法 + 会找最新可用地址**。搜"Docker Hub 国内镜像加速 可用"，挑近三个月内文章里验证过的。
 
-配置方法：Docker Desktop → 设置（齿轮）→ **Docker Engine**，把 JSON 改成：
+配置方法：Docker Desktop → 设置（齿轮）→ **Docker Engine**，把 JSON 改成（下面两个地址只是写作时的示例，**不保证长期可用**，失效就按上面的方法换新的）：
 
 ```json
 {

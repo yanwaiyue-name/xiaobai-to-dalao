@@ -14,7 +14,7 @@
 ## 第 1 步：下载安装
 
 1. 官网：**https://code.visualstudio.com** → 点 Download for Windows。
-2. 国内慢：腾讯镜像 **https://mirrors.cloud.tencent.com/vscode/** → 找 `stable` 目录 → `VSCodeUserSetup-x64-x.x.x.exe`。
+2. 国内下载慢：优先挂代理（科学上网篇）或换手机热点重试。⚠️ 网上流传的"腾讯 VS Code 镜像"等第三方镜像地址经常失效或根本不存在，**不要用来路不明的下载站**，认准官网域名。
 3. 安装时把这两项勾上（默认已勾）：
    - ☑ 将"通过 Code 打开"操作添加到资源管理器目录上下文菜单
    - ☑ 将"通过 Code 打开"操作添加到文件资源管理器文件上下文菜单

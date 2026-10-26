@@ -14,7 +14,7 @@ Windows 10 / 11，无其他要求。
 
 ## 第 1 步：下载安装
 
-1. 官网：**https://www.python.org/downloads/** → 黄色大按钮下载最新版（写作时是 3.12/3.13 系列）。
+1. 官网：**https://www.python.org/downloads/** → 黄色大按钮下载最新稳定版（版本号随时间变，以官网显示为准，不必追求和教程截图一致）。
 2. 国内下载慢：华为镜像 **https://mirrors.huaweicloud.com/python/** → 找对应版本 → `amd64.exe` 结尾的安装包。
 
 ## ⚠️ 安装界面上唯一的生死选项
