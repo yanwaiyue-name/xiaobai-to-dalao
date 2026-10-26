@@ -18,3 +18,6 @@ desktop.ini
 
 # 站点构建产物（由 scripts/build-site.ps1 生成，CI 里现算现发）
 site/
+
+# 版本检查产物
+version-report.txt
