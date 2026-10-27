@@ -222,6 +222,8 @@ function Convert-Markdown([string[]]$Lines) {
     $DASH = [char]45
     $STAR = [char]42
 
+    $usedIds = @{}
+
     $flushPara = {
         if ($para.Count -gt 0) {
             [void]$out.Add("<p>" + (Convert-Inline (($para -join " ").Trim())) + "</p>")
@@ -243,6 +245,13 @@ function Convert-Markdown([string[]]$Lines) {
                 $i++
             }
             $i++
+            # 没写语言标记时，按内容粗略判断：含命令特征的多半是终端命令
+            if (-not $lang) {
+                $joined = ($buf -join " ").ToLowerInvariant()
+                if ($joined -match '^(npm|pip|git|cd |mkdir|curl|wget|node|python|docker|java|mysql|set-|export|\$env|echo|copy|xcopy|where|winget|choco|nvm)') { $lang = 'powershell' }
+                elseif ($joined.Contains('select ') -or $joined.Contains('create table')) { $lang = 'sql' }
+                elseif ($joined.Contains('import ') -and $joined.Contains('print(')) { $lang = 'python' }
+            }
             $cls = ""
             if ($lang) { $cls = " class=" + $Q + "language-" + (ConvertTo-HtmlText $lang) + $Q }
             [void]$out.Add("<pre><code" + $cls + ">" + (ConvertTo-HtmlText ($buf -join $NL)) + "</code></pre>")
@@ -268,6 +277,12 @@ function Convert-Markdown([string[]]$Lines) {
                 . $flushPara
                 $text = $trim.Substring($lvl).Trim()
                 $slug = Get-Slug $text
+                # 同一页允许重复标题（如两处「✅ 验证」），id 必须唯一，否则锚点跳转失效
+                if ($usedIds.ContainsKey($slug)) {
+                    $usedIds[$slug] = $usedIds[$slug] + 1
+                    $slug = $slug + [string][char]45 + [string]$usedIds[$slug]
+                }
+                else { $usedIds[$slug] = 1 }
                 [void]$out.Add("<h" + $lvl + " id=" + $Q + $slug + $Q + ">" + (Convert-Inline $text) + "</h" + $lvl + ">")
                 $i++
                 continue
