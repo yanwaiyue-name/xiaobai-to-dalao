@@ -46,6 +46,12 @@ jobs:
             --exclude '.*localhost.*'
             --exclude '.*example\.com.*'
             --exclude '.*gh-proxy\.com.*'
+            # CSDN 对境外机房 IP 直接 reset 连接（os error 104），不是死链。
+            # 这类站点无法从 CI 判定存活，排除后由人工抽查。
+            --exclude '.*csdn\.net.*'
+            # 同类：国内社区的常见反爬拦截
+            --exclude '.*jianshu\.com.*'
+            --exclude '.*zhihu\.com.*'
             './**/*.md'
           output: lychee-report.md
           fail: true
