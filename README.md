@@ -9,6 +9,8 @@
 
 [![在线教程](https://img.shields.io/badge/📖_在线阅读-教程站-2ea44f?style=flat)](https://yanwaiyue-name.github.io/xiaobai-to-dalao/) [![License](https://img.shields.io/badge/license-MIT-green) ![Platform](https://img.shields.io/badge/平台-Windows优先-blue) ![Status](https://img.shields.io/badge/状态-持续更新-orange)
 
+[English](README.en.md) ｜ **中文**
+
 </div>
 
 ---

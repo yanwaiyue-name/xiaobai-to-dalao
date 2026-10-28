@@ -1,11 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: "📎 官方网址速查表"
-    url: https://github.com/yanwaiyue-name/xiaobai-to-dalao/blob/main/docs/10-官方网址速查表.md
-    about: 官网下载、国内镜像源、社区求助平台一站直达
-  - name: "🛫 机场导航（姊妹项目）"
-    url: https://github.com/yanwaiyue-name/airport-nav
-    about: 机场名单与入口存活状态（每周自动体检）
-  - name: "⬇️ AI 客户端下载中心（姊妹项目）"
-    url: https://github.com/yanwaiyue-name/agent-download
-    about: 40+ 款 AI 工具的官方下载地址
+  - name: 写作规范
+    url: https://github.com/yanwaiyue-name/xiaobai-to-dalao/blob/main/CONTRIBUTING.md
+    about: 贡献前请先看每章必须有的结构

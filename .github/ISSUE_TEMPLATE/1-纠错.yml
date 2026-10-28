@@ -1,0 +1,35 @@
+name: 内容有误 / 跑不通
+description: 命令执行失败、步骤缺失、说明不对
+title: "[纠错] "
+labels: ["纠错"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: 哪一章
+      placeholder: 例：01-科学上网篇/03-Windows从零开始-ClashVerge安装教程
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 出了什么问题
+      description: 把报错原文贴进来，别只描述
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: 你的环境
+      placeholder: 例：Windows 11 23H2，PowerShell 7.4
+  - type: textarea
+    id: expect
+    attributes:
+      label: 你期望的结果
+  - type: checkboxes
+    id: check
+    attributes:
+      label: 确认
+      options:
+        - label: 我按章节步骤完整做了一遍，不是跳步导致的问题
+          required: true

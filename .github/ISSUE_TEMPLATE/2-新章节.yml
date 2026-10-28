@@ -1,0 +1,25 @@
+name: 建议新增章节
+description: 你觉得某个知识点该写进来
+title: "[新章节] "
+labels: ["新内容"]
+body:
+  - type: textarea
+    id: topic
+    attributes:
+      label: 想加什么内容
+      description: 一句话说清楚这章解决什么问题
+      placeholder: 例：WSL2 怎么装，为什么比虚拟机好用
+    validations:
+      required: true
+  - type: textarea
+    id: who
+    attributes:
+      label: 谁会需要
+      description: 什么基础的人会卡在这里
+    validations:
+      required: true
+  - type: textarea
+    id: draft
+    attributes:
+      label: 你能写吗（可选）
+      description: 如果你已经会了，可以直接发 PR
