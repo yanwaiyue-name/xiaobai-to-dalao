@@ -1,14 +1,21 @@
-name: 链接每周体检
+name: 每周体检
+# 合并了两个定时任务：链接体检（周六）和版本时效检查（周一）。
+# 它们原本是两个文件，但都是"定时 + 手动触发 + 只读 + 报告"，合并后少一个 workflow，
+# 排查问题时也不用在两个文件之间跳。
+# 注意：pages.yml 保持独立 —— 它是 push 触发且需要 pages/id-token 写权限，
+# 合并进来会把那些权限带给定时任务，没有必要。
 
 on:
   schedule:
-    # 每周六 UTC 03:00 = 北京时间周六 11:00（与姊妹项目 airport-nav 的体检日对齐）
-    - cron: "0 3 * * 6"
-  workflow_dispatch: {}
+    # 链接体检：每周六 03:00 UTC = 北京时间周六 11:00
+    - cron: '0 3 * * 6'
+    # 版本时效：每周一 05:00 UTC = 北京时间周一 13:00
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
 
 permissions:
-  issues: write
   contents: read
+  issues: write
 
 jobs:
   link-check:
@@ -67,3 +74,20 @@ jobs:
           else
             gh issue create --title "$title" --body-file lychee-report.md
           fi
+
+  versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: 探测上游最新版本并比对文档
+        shell: pwsh
+        run: ./scripts/check-versions.ps1
+
+      - name: 上传报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-report
+          path: version-report.txt
+          if-no-files-found: ignore
