@@ -1,4 +1,4 @@
-﻿#Requires -Version 5.1
+#Requires -Version 5.1
 <#
 .SYNOPSIS
   docs/ 下的 Markdown 教程 -> 静态站点 site/
@@ -94,9 +94,12 @@ function Rewrite-Href([string]$Href) {
     if ($parts.Count -eq 0) { return (Get-RelLink -FromDir $script:CurSiteDir -ToPath "index.html") + $anchor }
 
     # 仓库根 README.md（相对文档根解析后就是单独一段 README.md）-> 站点根 index.html
+    # 根级的 README.en.md / README.xx.md 渲染成 README.en.html / README.xx.html，这里必须同样映射，
+    # 否则 [English](README.en.md) 会生成一个不存在的 README.en.html（历史 bug：Pages CI 因此变红）。
     $last = [string]$parts[$parts.Count - 1]
-    if ($parts.Count -eq 1 -and $last -eq "README.md") {
-        return (Get-RelLink -FromDir $script:CurSiteDir -ToPath "index.html") + $anchor
+    if ($parts.Count -eq 1 -and $last -match '^README(\.[A-Za-z-]+)?\.md$') {
+        $leafOut = if ($last -eq "README.md") { "index.html" } else { $last.Substring(0, $last.Length - 3) + ".html" }
+        return (Get-RelLink -FromDir $script:CurSiteDir -ToPath $leafOut) + $anchor
     }
 
     # docs 这层在站点里被抹平（docs/a/b.md -> a/b.html）
@@ -527,6 +530,7 @@ foreach ($f in $mdFiles) {
 }
 
 $pages = New-Object System.Collections.Generic.List[object]
+$script:ExtraPageCount = 0
 
 if ($hasRootReadme) {
     $script:CurDocDir = ""
@@ -537,6 +541,26 @@ if ($hasRootReadme) {
     $html = New-PageHtml -Title "首页" -Body $body -SideNav $nav -Pager "" -RootPrefix ""
     [System.IO.File]::WriteAllText((Join-Path $OutDir "index.html"), $html, $utf8)
     $pages.Add([pscustomobject]@{ OutRel = "index.html"; Title = "首页"; Depth = 0 })
+
+    # 根目录的其他语言版本（README.en.md 等）与 SECURITY.md / CONTRIBUTING.md 一起渲染成根级页面。
+    # 以前只渲染 README.md，导致根 README 里的 [English](README.en.md) 指向一个不存在的页面。
+    $rootPages = @(Get-ChildItem -LiteralPath $root -File -Filter "*.md" |
+        Where-Object { $_.Name -ne "README.md" } |
+        Sort-Object Name)
+    foreach ($rp in $rootPages) {
+        $script:CurDocDir = ""
+        $script:CurSiteDir = ""
+        $rpOut = $rp.Name.Substring(0, $rp.Name.Length - 3) + ".html"
+        $rpLines = @(Get-Content -LiteralPath $rp.FullName -Encoding UTF8)
+        $rpBody = Convert-Markdown -Lines $rpLines
+        $rpNav = New-SideNav -ActiveRel ("../" + $rp.Name) -RootPrefix ""
+        $rpTitle = $rp.Name.Substring(0, $rp.Name.Length - 3)
+        $rpHtml = New-PageHtml -Title $rpTitle -Body $rpBody -SideNav $rpNav -Pager "" -RootPrefix ""
+        [System.IO.File]::WriteAllText((Join-Path $OutDir $rpOut), $rpHtml, $utf8)
+        # 侧边栏与翻页只需要正文页，根级辅助文件（英文 README / 安全策略 / 贡献指南）不进 pages，
+        # 避免“上一章/下一章”把它们串成阅读顺序。
+        $script:ExtraPageCount++
+    }
 }
 
 foreach ($f in $mdFiles) {
@@ -607,5 +631,5 @@ for ($k = 0; $k -lt $pages.Count; $k++) {
     }
 }
 
-Write-Output ("站点已生成：" + $pages.Count + " 个页面 -> " + $OutDir)
+Write-Output ("站点已生成：" + ($pages.Count + $script:ExtraPageCount) + " 个页面 -> " + $OutDir)
 
