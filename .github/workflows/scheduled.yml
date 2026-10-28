@@ -37,6 +37,10 @@ jobs:
         with:
           # 403/429/521 多为反爬或限流（CSDN、工信部备案站对 CI 常返回 521），
           # 视作“无法判定”而不是死链，避免每周误报
+          # 反爬站点排除：CSDN / 简书 / 知乎 对境外机房 IP 会直接 reset 连接
+          # （实测报 Connection reset by peer, os error 104），这不是死链。
+          # CI 无法判定这类站点，排除后由人工抽查。
+          # ⚠️ 注意：以上说明只能写在这里（YAML 层），写进下面的 args 会被 shell 当注释吃掉。
           args: >-
             --no-progress
             --timeout 20
@@ -46,10 +50,7 @@ jobs:
             --exclude '.*localhost.*'
             --exclude '.*example\.com.*'
             --exclude '.*gh-proxy\.com.*'
-            # CSDN 对境外机房 IP 直接 reset 连接（os error 104），不是死链。
-            # 这类站点无法从 CI 判定存活，排除后由人工抽查。
             --exclude '.*csdn\.net.*'
-            # 同类：国内社区的常见反爬拦截
             --exclude '.*jianshu\.com.*'
             --exclude '.*zhihu\.com.*'
             './**/*.md'
