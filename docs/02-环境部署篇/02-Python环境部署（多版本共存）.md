@@ -25,7 +25,7 @@ Windows 10 / 11，无其他要求。
 
 然后再点 Install Now。
 
-**90% 的"装完不能用"都因为漏了这一勾。** 漏了怎么办？别慌，看第 8 章（急救手册）补 PATH，或者卸载重装一遍（最快）。
+**这是"装完不能用"最常见的原因**——新手反馈的这类报错里，漏勾这一项占了大头（经验判断，没有官方统计）。漏了怎么办？别慌，看第 8 章（急救手册）补 PATH，或者卸载重装一遍（最快）。
 
 ## ✅ 验证安装
 
@@ -40,19 +40,31 @@ pip --version
 
 ⚠️ 如果输 `python` 弹出了**微软商店**：这是 Windows 的"应用执行别名"在捣乱。设置 → 应用 → 高级应用设置 → 应用执行别名 → 把 `python.exe` / `python3.exe` 两个开关**关掉**，再重开终端试试。
 
-## 第 2 步：把 pip 换成国内源（装库快 10 倍）
+## 第 2 步（可选）：把 pip 换成国内源
+
+**先试官方源**：现在 PyPI 在国内多数网络下能直连，先 `pip install requests` 跑一次，几秒能装完就不用改。
+
+**只有下载慢 / 超时时再换镜像**：
 
 ```powershell
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-从此 `pip install` 默认走清华源。验证：随便装个小东西
+这条命令改的是**当前用户的全局 pip 配置**（写在 `%APPDATA%\pip\pip.ini`），以后所有项目都走这个源。镜像站同步有延迟，**刚发布的包可能要等几小时到一天**才出现。
+
+**不想改了 / 出问题要还原**：
 
 ```powershell
-pip install requests
+pip config unset global.index-url
 ```
 
-几秒内完成即配置生效。
+**更推荐的做法**：给公司项目或要复现的实验，别动全局源，用临时参数——
+
+```powershell
+pip install requests -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+**注意**：镜像源是第三方托管，下载的包以 PyPI 官方为准。对安全性要求高的项目（比如要写进生产环境依赖），优先用官方源，或换源后核对 `pip download` 拿到的包哈希是否与 PyPI 页面上的一致。
 
 ## 第 3 步：跑第一个程序
 
