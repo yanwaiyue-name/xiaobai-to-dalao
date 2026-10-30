@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>README.en · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="index.html">首页</a></li><li><a href="00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="10-官方网址速查表.html">官方网址速查表</a></li><li><a href="11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li></ul><div class="grp">科学上网篇</div><ul><li><a href="01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a href="01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a href="01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a href="02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a href="02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a href="02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a href="02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a href="02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a href="02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a href="02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<p>&lt;div align=&quot;center&quot;&gt;</p>
+<h1 id="from-novice-to-pro">🐣 From Novice to Pro</h1>
+<p><strong>A computer basics course for absolute beginners: proxy setup + development environment</strong></p>
+<p><a href="https://img.shields.io/badge/license-MIT-green">![License</a>](LICENSE) <a href="https://img.shields.io/badge/chapters-22-blue">![Chapters</a>](docs/)</p>
+<p><strong>📖 Read online</strong>: https://yanwaiyue-name.github.io/xiaobai-to-dalao/ <strong>中文</strong>: <a href="index.html">README.md</a></p>
+<p>&lt;/div&gt;</p>
+<hr>
+<h2 id="the-premise">The premise</h2>
+<p>Most tutorials assume you already know things. This one assumes you know <strong>nothing</strong>.</p>
+<p>Every chapter answers three questions: <strong>what to install, how to install it, how to confirm it worked.</strong></p>
+<h2 id="structure">Structure</h2>
+<pre><code>docs/
+├── 00 前言 — how to use this repo
+├── 01 科学上网篇 (8 chapters) — VPN concepts, clients, troubleshooting, safety
+├── 02 环境部署篇 (9 chapters) — Git, Python, Node.js, Java, VS Code, Docker, MySQL, troubleshooting
+└── 99 进阶篇 (in progress)</code></pre>
+<p>22 chapters total. Content is in Simplified Chinese.</p>
+<h2 id="what-makes-a-chapter-usable">What makes a chapter usable</h2>
+<p>Every chapter follows a fixed structure:</p>
+<ol>
+<li><strong>What this solves</strong> — one paragraph, what you can do after finishing</li>
+<li><strong>Prerequisites</strong> — what you need to know first</li>
+<li><strong>Numbered steps</strong> — each with a copy-pasteable command</li>
+<li><strong>✅ Verification</strong> — how to confirm you didn't waste your time</li>
+<li><strong>Common pitfalls</strong> — a table of symptom → cause and fix</li>
+<li><strong>Navigation</strong> — prev / index / next, both at top and bottom</li>
+</ol>
+<h2 id="the-site-is-generated-not-hand-written">The site is generated, not hand-written</h2>
+<p><code>scripts/build-site.ps1</code> renders all 22 Markdown chapters into a static site with <strong>zero external dependencies</strong> — no pandoc, no node packages, no third-party modules. Just PowerShell.</p>
+<p>Key properties:</p>
+<ul>
+<li><strong>Byte-identical output across PowerShell 5.1 and PS 7</strong> — verified by SHA-256 on all 22 files</li>
+<li><strong>Zero broken internal links</strong> — CI validates every <code>href</code> after each build</li>
+<li><strong>Duplicate anchor IDs auto-suffixed</strong> — two &quot;✅ 验证&quot; headings on one page no longer collide</li>
+<li><strong>Code block language auto-detection</strong> — 94% of fences get syntax highlighting even when the source has no language tag</li>
+</ul>
+<h2 id="automated-checks">Automated checks</h2>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>W</th><th>o</th><th>r</th><th>k</th><th>f</th><th>l</th><th>o</th><th>w</th><th></th><th>|</th><th></th><th>W</th><th>h</th><th>a</th><th>t</th><th></th><th>i</th><th>t</th><th></th><th>d</th><th>o</th><th>e</th><th>s</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>链</td><td>接</td><td>每</td><td>周</td><td>体</td><td>检</td><td></td><td>|</td><td></td><td>W</td><td>e</td><td>e</td><td>k</td><td>l</td><td>y</td><td></td><td>l</td><td>y</td><td>c</td><td>h</td><td>e</td><td>e</td><td></td><td>l</td><td>i</td><td>n</td><td>k</td><td></td><td>c</td><td>h</td><td>e</td><td>c</td><td>k</td><td></td><td>a</td><td>c</td><td>r</td><td>o</td><td>s</td><td>s</td><td></td><td>a</td><td>l</td><td>l</td><td></td><td>d</td><td>o</td><td>c</td><td>s</td><td></td><td></td></tr><tr><td></td><td></td><td>B</td><td>u</td><td>i</td><td>l</td><td>d</td><td></td><td>d</td><td>o</td><td>c</td><td>s</td><td></td><td>s</td><td>i</td><td>t</td><td>e</td><td></td><td>|</td><td></td><td>B</td><td>u</td><td>i</td><td>l</td><td>d</td><td>s</td><td></td><td>t</td><td>h</td><td>e</td><td></td><td>s</td><td>i</td><td>t</td><td>e</td><td></td><td>o</td><td>n</td><td></td><td>e</td><td>v</td><td>e</td><td>r</td><td>y</td><td></td><td>p</td><td>u</td><td>s</td><td>h</td><td>,</td><td></td><td>v</td><td>a</td><td>l</td><td>i</td><td>d</td><td>a</td><td>t</td><td>e</td><td>s</td><td></td><td>i</td><td>n</td><td>t</td><td>e</td><td>r</td><td>n</td><td>a</td><td>l</td><td></td><td>l</td><td>i</td><td>n</td><td>k</td><td>s</td><td>,</td><td></td><td>d</td><td>e</td><td>p</td><td>l</td><td>o</td><td>y</td><td>s</td><td></td><td>t</td><td>o</td><td></td><td>P</td><td>a</td><td>g</td><td>e</td><td>s</td><td></td><td></td></tr><tr><td></td><td></td><td>版</td><td>本</td><td>时</td><td>效</td><td>检</td><td>查</td><td></td><td>|</td><td></td><td>W</td><td>e</td><td>e</td><td>k</td><td>l</td><td>y</td><td>:</td><td></td><td>c</td><td>o</td><td>m</td><td>p</td><td>a</td><td>r</td><td>e</td><td>s</td><td></td><td>v</td><td>e</td><td>r</td><td>s</td><td>i</td><td>o</td><td>n</td><td></td><td>n</td><td>u</td><td>m</td><td>b</td><td>e</td><td>r</td><td>s</td><td></td><td>i</td><td>n</td><td></td><td>t</td><td>h</td><td>e</td><td></td><td>d</td><td>o</td><td>c</td><td>s</td><td></td><td>a</td><td>g</td><td>a</td><td>i</td><td>n</td><td>s</td><td>t</td><td></td><td>u</td><td>p</td><td>s</td><td>t</td><td>r</td><td>e</td><td>a</td><td>m</td><td></td><td>r</td><td>e</td><td>l</td><td>e</td><td>a</td><td>s</td><td>e</td><td>s</td><td></td><td></td></tr></tbody></table></div>
+<p>## Contributing</p>
+<p>Read <a href="CONTRIBUTING.html">CONTRIBUTING.md</a>. Every chapter must follow the structure above.</p>
+<p>## Disclaimer</p>
+<p>Technical content ages. If a command no longer works or a link is dead, please open an issue.</p>
+
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>

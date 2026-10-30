@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python环境部署（多版本共存） · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="../index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="../index.html">首页</a></li><li><a href="../00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="../10-官方网址速查表.html">官方网址速查表</a></li><li><a href="../11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li></ul><div class="grp">科学上网篇</div><ul><li><a href="../01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="../01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a href="../01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="../01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="../01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="../01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a href="../01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="../01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="../02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a class="active" href="../02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a href="../02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="../02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a href="../02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a href="../02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a href="../02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="../99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<h1 id="02-环境部署篇-第-2-章python-环境部署多版本共存">02 环境部署篇 · 第 2 章：Python 环境部署（多版本共存）</h1>
+<p><a href="01-Git安装配置与GitHub连接（含代理加速）.html">← 上一章</a> ｜ <a href="../index.html">返回目录</a> ｜ <a href="03-NodeJS环境部署（nvm管理）.html">第 3 章：Node.js 环境部署 →</a></p>
+<h2 id="这章解决什么问题">这章解决什么问题</h2>
+<ul>
+<li>从零装好 Python，并且<strong>装完就能在命令行里用</strong></li>
+<li>搞懂&quot;为什么我装了却报'python' 不是内部或外部命令&quot;</li>
+<li>学会用&quot;虚拟环境&quot;（venv）：给每个项目一个独立小房间，装包互不打架</li>
+</ul>
+<h2 id="前置要求">前置要求</h2>
+<p>Windows 10 / 11，无其他要求。</p>
+<h2 id="第-1-步下载安装">第 1 步：下载安装</h2>
+<ol>
+<li>官网：<strong>https://www.python.org/downloads/</strong> → 黄色大按钮下载最新稳定版（版本号随时间变，以官网显示为准，不必追求和教程截图一致）。</li>
+<li>国内下载慢：华为镜像 <strong>https://mirrors.huaweicloud.com/python/</strong> → 找对应版本 → <code>amd64.exe</code> 结尾的安装包。</li>
+</ol>
+<h2 id="安装界面上唯一的生死选项">⚠️ 安装界面上唯一的生死选项</h2>
+<p>双击安装包后的<strong>第一个界面</strong>，务必勾选：</p>
+<blockquote><p>☑ <strong>Add python.exe to PATH</strong></p></blockquote>
+<p>然后再点 Install Now。</p>
+<p><strong>这是&quot;装完不能用&quot;最常见的原因</strong>——新手反馈的这类报错里，漏勾这一项占了大头（经验判断，没有官方统计）。漏了怎么办？别慌，看第 8 章（急救手册）补 PATH，或者卸载重装一遍（最快）。</p>
+<h2 id="验证安装">✅ 验证安装</h2>
+<p><strong>新开</strong> PowerShell：</p>
+<pre><code class="language-powershell">python --version
+pip --version</code></pre>
+<p>分别输出版本号（如 <code>Python 3.13.1</code>）即成功。</p>
+<p>⚠️ 如果输 <code>python</code> 弹出了<strong>微软商店</strong>：这是 Windows 的&quot;应用执行别名&quot;在捣乱。设置 → 应用 → 高级应用设置 → 应用执行别名 → 把 <code>python.exe</code> / <code>python3.exe</code> 两个开关<strong>关掉</strong>，再重开终端试试。</p>
+<h2 id="第-2-步可选把-pip-换成国内源">第 2 步（可选）：把 pip 换成国内源</h2>
+<p><strong>先试官方源</strong>：现在 PyPI 在国内多数网络下能直连，先 <code>pip install requests</code> 跑一次，几秒能装完就不用改。</p>
+<p><strong>只有下载慢 / 超时时再换镜像</strong>：</p>
+<pre><code class="language-powershell">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code></pre>
+<p>这条命令改的是<strong>当前用户的全局 pip 配置</strong>（写在 <code>%APPDATA%\pip\pip.ini</code>），以后所有项目都走这个源。镜像站同步有延迟，<strong>刚发布的包可能要等几小时到一天</strong>才出现。</p>
+<p><strong>不想改了 / 出问题要还原</strong>：</p>
+<pre><code class="language-powershell">pip config unset global.index-url</code></pre>
+<p><strong>更推荐的做法</strong>：给公司项目或要复现的实验，别动全局源，用临时参数——</p>
+<pre><code class="language-powershell">pip install requests -i https://pypi.tuna.tsinghua.edu.cn/simple</code></pre>
+<p><strong>注意</strong>：镜像源是第三方托管，下载的包以 PyPI 官方为准。对安全性要求高的项目（比如要写进生产环境依赖），优先用官方源，或换源后核对 <code>pip download</code> 拿到的包哈希是否与 PyPI 页面上的一致。</p>
+<h2 id="第-3-步跑第一个程序">第 3 步：跑第一个程序</h2>
+<pre><code class="language-powershell"># 建个工作目录（路径别带中文！）
+mkdir C:\code\hello
+cd C:\code\hello</code></pre>
+<p>新建 <code>hello.py</code> 内容一行：</p>
+<pre><code class="language-python">print(&quot;Hello, 大佬之路开始！&quot;)</code></pre>
+<p>运行：</p>
+<pre><code class="language-powershell">python hello.py</code></pre>
+<h2 id="第-4-步虚拟环境venv每个项目独立一套">第 4 步：虚拟环境（venv）——每个项目独立一套</h2>
+<p>为什么需要：A 项目要 <code>requests 2.x</code>，B 项目要 <code>3.x</code>，装一起必打架。虚拟环境就是给每个项目一个独立的&quot;包柜子&quot;。</p>
+<pre><code class="language-powershell">cd C:\code\hello
+python -m venv venv          # 创建（首次约 10 秒）
+.\venv\Scripts\activate      # 激活：命令行前面出现 (venv) 字样
+pip install requests         # 此时装的包只属于这个项目
+deactivate                   # 退出虚拟环境</code></pre>
+<p>⚠️ PowerShell 首次执行 activate 报&quot;禁止运行脚本&quot;？开一个管理员 PowerShell 执行一次：</p>
+<pre><code class="language-powershell">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
+<p>然后重开终端再 activate。</p>
+<h2 id="多版本共存怎么办">💡 多版本共存怎么办</h2>
+<ul>
+<li>官方安装包多装几个版本时，用启动器调用：<code>py -3.12 hello.py</code>、<code>py -3.13 hello.py</code>（<code>py --list</code> 查看装了哪些）。</li>
+<li>需要频繁切换版本搞 AI / 数据科学？直接上 <strong>Miniconda</strong>（<a href="https://docs.conda.io/en/latest/miniconda.html">下载页</a>），<code>conda create -n py312 python=3.12</code> 一条命令一个环境。新手先不装，等真有需要再说。</li>
+</ul>
+<h2 id="常见坑">常见坑</h2>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>现</th><th>象</th><th></th><th>|</th><th></th><th>解</th><th>法</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>`</td><td>'</td><td>p</td><td>y</td><td>t</td><td>h</td><td>o</td><td>n</td><td>'</td><td></td><td>不</td><td>是</td><td>内</td><td>部</td><td>或</td><td>外</td><td>部</td><td>命</td><td>令</td><td>`</td><td></td><td>|</td><td></td><td>漏</td><td>勾</td><td></td><td>A</td><td>d</td><td>d</td><td></td><td>t</td><td>o</td><td></td><td>P</td><td>A</td><td>T</td><td>H</td><td></td><td>→</td><td></td><td>第</td><td></td><td>8</td><td></td><td>章</td><td>补</td><td></td><td>P</td><td>A</td><td>T</td><td>H</td><td></td><td>或</td><td>重</td><td>装</td><td></td><td></td></tr><tr><td></td><td></td><td>输</td><td></td><td>p</td><td>y</td><td>t</td><td>h</td><td>o</td><td>n</td><td></td><td>弹</td><td>微</td><td>软</td><td>商</td><td>店</td><td></td><td>|</td><td></td><td>关</td><td>闭</td><td>&quot;</td><td>应</td><td>用</td><td>执</td><td>行</td><td>别</td><td>名</td><td>&quot;</td><td>（</td><td>上</td><td>文</td><td>）</td><td></td><td></td></tr><tr><td></td><td></td><td>`</td><td>p</td><td>i</td><td>p</td><td></td><td>i</td><td>n</td><td>s</td><td>t</td><td>a</td><td>l</td><td>l</td><td>`</td><td></td><td>半</td><td>天</td><td>没</td><td>动</td><td>静</td><td>/</td><td>超</td><td>时</td><td></td><td>|</td><td></td><td>没</td><td>换</td><td>国</td><td>内</td><td>源</td><td>，</td><td>回</td><td>第</td><td></td><td>2</td><td></td><td>步</td><td></td><td></td></tr><tr><td></td><td></td><td>`</td><td>e</td><td>r</td><td>r</td><td>o</td><td>r</td><td>:</td><td></td><td>M</td><td>i</td><td>c</td><td>r</td><td>o</td><td>s</td><td>o</td><td>f</td><td>t</td><td></td><td>V</td><td>i</td><td>s</td><td>u</td><td>a</td><td>l</td><td></td><td>C</td><td>+</td><td>+</td><td></td><td>1</td><td>4</td><td>.</td><td>0</td><td></td><td>i</td><td>s</td><td></td><td>r</td><td>e</td><td>q</td><td>u</td><td>i</td><td>r</td><td>e</td><td>d</td><td>`</td><td></td><td>|</td><td></td><td>某</td><td>些</td><td>库</td><td>要</td><td>编</td><td>译</td><td>，</td><td>先</td><td>试</td><td></td><td>`</td><td>p</td><td>i</td><td>p</td><td></td><td>i</td><td>n</td><td>s</td><td>t</td><td>a</td><td>l</td><td>l</td><td></td><td>-</td><td>-</td><td>o</td><td>n</td><td>l</td><td>y</td><td>-</td><td>b</td><td>i</td><td>n</td><td>a</td><td>r</td><td>y</td><td></td><td>:</td><td>a</td><td>l</td><td>l</td><td>:</td><td></td><td>包</td><td>名</td><td>`</td><td>；</td><td>还</td><td>不</td><td>行</td><td>就</td><td>装</td><td>个</td><td></td><td>[</td><td>V</td><td>S</td><td></td><td>B</td><td>u</td><td>i</td><td>l</td><td>d</td><td></td><td>T</td><td>o</td><td>o</td><td>l</td><td>s</td><td>]</td><td>(</td><td>h</td><td>t</td><td>t</td><td>p</td><td>s</td><td>:</td><td>/</td><td>/</td><td>v</td><td>i</td><td>s</td><td>u</td><td>a</td><td>l</td><td>s</td><td>t</td><td>u</td><td>d</td><td>i</td><td>o</td><td>.</td><td>m</td><td>i</td><td>c</td><td>r</td><td>o</td><td>s</td><td>o</td><td>f</td><td>t</td><td>.</td><td>c</td><td>o</td><td>m</td><td>/</td><td>v</td><td>i</td><td>s</td><td>u</td><td>a</td><td>l</td><td>-</td><td>c</td><td>p</td><td>p</td><td>-</td><td>b</td><td>u</td><td>i</td><td>l</td><td>d</td><td>-</td><td>t</td><td>o</td><td>o</td><td>l</td><td>s</td><td>/</td><td>)</td><td></td><td></td></tr><tr><td></td><td></td><td>项</td><td>目</td><td>代</td><td>码</td><td>里</td><td></td><td>v</td><td>e</td><td>n</td><td>v</td><td></td><td>传</td><td>给</td><td>了</td><td>别</td><td>人</td><td></td><td>|</td><td></td><td>v</td><td>e</td><td>n</td><td>v</td><td></td><td>文</td><td>件</td><td>夹</td><td>不</td><td>该</td><td>进</td><td></td><td>g</td><td>i</td><td>t</td><td>，</td><td>写</td><td>进</td><td></td><td>`</td><td>.</td><td>g</td><td>i</td><td>t</td><td>i</td><td>g</td><td>n</td><td>o</td><td>r</td><td>e</td><td>`</td><td></td><td></td></tr></tbody></table></div>
+<p>## ✅ 验证全部完成</p>
+<pre><code class="language-powershell">python --version     # 版本号
+pip --version        # 版本号，且路径在 Python 目录下
+python hello.py      # 打印出欢迎语
+python -m venv venv  # 能建虚拟环境</code></pre>
+<hr>
+<p><a href="01-Git安装配置与GitHub连接（含代理加速）.html">← 上一章</a> ｜ <a href="03-NodeJS环境部署（nvm管理）.html">第 3 章：Node.js 环境部署 →</a> ｜ <a href="../index.html">← 返回目录</a></p>
+
+<div class="pager"><a class="prev" href="../02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">← Git安装配置与GitHub连接（含代理加速）</a><a class="next" href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理） →</a></div>
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>

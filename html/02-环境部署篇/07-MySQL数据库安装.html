@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MySQL数据库安装 · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="../index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="../index.html">首页</a></li><li><a href="../00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="../10-官方网址速查表.html">官方网址速查表</a></li><li><a href="../11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li></ul><div class="grp">科学上网篇</div><ul><li><a href="../01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="../01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a href="../01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="../01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="../01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="../01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a href="../01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="../01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="../02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a href="../02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a href="../02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="../02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a href="../02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a class="active" href="../02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a href="../02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="../99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<h1 id="02-环境部署篇-第-7-章mysql-数据库安装">02 环境部署篇 · 第 7 章：MySQL 数据库安装</h1>
+<p><a href="06-DockerDesktop安装与国内镜像.html">← 上一章</a> ｜ <a href="../index.html">返回目录</a> ｜ <a href="08-报错急救手册-环境变量端口占用权限问题.html">第 8 章：报错急救手册 →</a></p>
+<h2 id="这章解决什么问题">这章解决什么问题</h2>
+<ul>
+<li>在 Windows 上装好 MySQL 数据库并设置为系统服务</li>
+<li>用命令行连上它、建第一个数据库</li>
+<li>选一款可视化工具（不天天敲 SQL 也很好用）</li>
+</ul>
+<h2 id="前置要求">前置要求</h2>
+<p>Windows 10 / 11。⚠️ 如果 3306 端口被别的软件占了（比如之前装过的软件自带 MySQL），先看第 8 章端口占用篇。</p>
+<h2 id="第-1-步下载安装器">第 1 步：下载安装器</h2>
+<ol>
+<li>官网：<strong>https://dev.mysql.com/downloads/installer/</strong> → 下体积大的<strong>离线完整版</strong>（<code>mysql-installer-community-x.x.xx.msi</code>，400MB+）。</li>
+</ol>
+<ul>
+<li>⚠️ 官网下载要先点 &quot;No thanks, just start my download&quot; 跳过注册。</li>
+</ul>
+<ol>
+<li>要不要登录账号？选 <strong>No thanks</strong>。</li>
+</ol>
+<h2 id="第-2-步安装照着选少踩坑">第 2 步：安装（照着选，少踩坑）</h2>
+<p>运行安装器，类型选 <strong>Custom</strong>（自定义，只装需要的）：</p>
+<ol>
+<li>选中 <strong>MySQL Server 8.x (x64)</strong> 移到右边（优先选 <strong>8.4 LTS</strong>，长期支持版）。</li>
+<li>再加一个 <strong>MySQL Workbench</strong>（官方可视化工具）。</li>
+<li>Next → Execute 开始安装。</li>
+</ol>
+<p>配置向导（一路默认，只注意这几处）：</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>页</th><th>面</th><th></th><th>|</th><th></th><th>怎</th><th>么</th><th>选</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>T</td><td>y</td><td>p</td><td>e</td><td></td><td>a</td><td>n</td><td>d</td><td></td><td>N</td><td>e</td><td>t</td><td>w</td><td>o</td><td>r</td><td>k</td><td>i</td><td>n</td><td>g</td><td></td><td>|</td><td></td><td>默</td><td>认</td><td>（</td><td>端</td><td>口</td><td></td><td>*</td><td>*</td><td>3</td><td>3</td><td>0</td><td>6</td><td>*</td><td>*</td><td>）</td><td></td><td></td></tr><tr><td></td><td></td><td>A</td><td>u</td><td>t</td><td>h</td><td>e</td><td>n</td><td>t</td><td>i</td><td>c</td><td>a</td><td>t</td><td>i</td><td>o</td><td>n</td><td></td><td>M</td><td>e</td><td>t</td><td>h</td><td>o</td><td>d</td><td></td><td>|</td><td></td><td>默</td><td>认</td><td>（</td><td>强</td><td>加</td><td>密</td><td>）</td><td>。</td><td>⚠</td><td>️</td><td></td><td>如</td><td>果</td><td>后</td><td>面</td><td>老</td><td>程</td><td>序</td><td>连</td><td>不</td><td>上</td><td>，</td><td>再</td><td>回</td><td>来</td><td>改</td><td>&quot;</td><td>L</td><td>e</td><td>g</td><td>a</td><td>c</td><td>y</td><td>&quot;</td><td></td><td></td></tr><tr><td></td><td></td><td>*</td><td>*</td><td>A</td><td>c</td><td>c</td><td>o</td><td>u</td><td>n</td><td>t</td><td>s</td><td></td><td>a</td><td>n</td><td>d</td><td></td><td>R</td><td>o</td><td>l</td><td>e</td><td>s</td><td>*</td><td>*</td><td></td><td>|</td><td></td><td>*</td><td>*</td><td>设</td><td>置</td><td></td><td>r</td><td>o</td><td>o</td><td>t</td><td></td><td>密</td><td>码</td><td>—</td><td>—</td><td>这</td><td>是</td><td>数</td><td>据</td><td>库</td><td>最</td><td>高</td><td>管</td><td>理</td><td>员</td><td>密</td><td>码</td><td>，</td><td>务</td><td>必</td><td>记</td><td>牢</td><td>*</td><td>*</td><td></td><td></td></tr><tr><td></td><td></td><td>W</td><td>i</td><td>n</td><td>d</td><td>o</td><td>w</td><td>s</td><td></td><td>S</td><td>e</td><td>r</td><td>v</td><td>i</td><td>c</td><td>e</td><td></td><td>|</td><td></td><td>默</td><td>认</td><td>（</td><td>开</td><td>机</td><td>自</td><td>启</td><td>）</td><td>。</td><td>服</td><td>务</td><td>名</td><td>以</td><td>向</td><td>导</td><td>里</td><td>显</td><td>示</td><td>的</td><td>为</td><td>准</td><td>，</td><td>下</td><td>文</td><td>命</td><td>令</td><td>里</td><td>的</td><td></td><td>`</td><td>M</td><td>y</td><td>S</td><td>Q</td><td>L</td><td>8</td><td>0</td><td>`</td><td></td><td>换</td><td>成</td><td>你</td><td>的</td><td>实</td><td>际</td><td>服</td><td>务</td><td>名</td><td></td><td></td></tr><tr><td></td><td></td><td>A</td><td>p</td><td>p</td><td>l</td><td>y</td><td></td><td>|</td><td></td><td>E</td><td>x</td><td>e</td><td>c</td><td>u</td><td>t</td><td>e</td><td></td><td>→</td><td></td><td>F</td><td>i</td><td>n</td><td>i</td><td>s</td><td>h</td><td></td><td></td></tr></tbody></table></div>
+<p>## ✅ 验证</p>
+<p>把 MySQL 加入 PATH：环境变量 → <code>Path</code> → 新建 <code>C:\Program Files\MySQL\MySQL Server 8.0\bin</code>（按实际版本路径）。然后<strong>新开</strong> PowerShell：</p>
+<pre><code class="language-powershell">mysql --version
+mysql -u root -p
+# 回车后输入你设的 root 密码</code></pre>
+<p>出现 <code>mysql&gt;</code> 提示符 = 连上了。敲第一个 SQL：</p>
+<pre><code class="language-sql">SHOW DATABASES;          -- 能看到 information_schema 等系统库
+CREATE DATABASE demo;    -- 建你的第一个库
+USE demo;
+SELECT NOW();            -- 显示当前时间
+EXIT;</code></pre>
+<p>## 第 3 步：可视化工具（强烈推荐）</p>
+<p>命令行适合学习 SQL 语法，日常用可视化工具效率翻倍：</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>工</th><th>具</th><th></th><th>|</th><th></th><th>价</th><th>格</th><th></th><th>|</th><th></th><th>一</th><th>句</th><th>话</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>*</td><td>*</td><td>M</td><td>y</td><td>S</td><td>Q</td><td>L</td><td></td><td>W</td><td>o</td><td>r</td><td>k</td><td>b</td><td>e</td><td>n</td><td>c</td><td>h</td><td>*</td><td>*</td><td></td><td>|</td><td></td><td>免</td><td>费</td><td>官</td><td>方</td><td></td><td>|</td><td></td><td>刚</td><td>才</td><td>装</td><td>过</td><td>了</td><td>，</td><td>先</td><td>用</td><td>它</td><td></td><td></td></tr><tr><td></td><td></td><td>*</td><td>*</td><td>D</td><td>B</td><td>e</td><td>a</td><td>v</td><td>e</td><td>r</td><td>*</td><td>*</td><td></td><td>|</td><td></td><td>免</td><td>费</td><td></td><td>|</td><td></td><td>开</td><td>源</td><td>全</td><td>能</td><td>，</td><td>支</td><td>持</td><td>所</td><td>有</td><td>数</td><td>据</td><td>库</td><td>，</td><td>*</td><td>*</td><td>口</td><td>碑</td><td>之</td><td>选</td><td>*</td><td>*</td><td></td><td></td></tr><tr><td></td><td></td><td>N</td><td>a</td><td>v</td><td>i</td><td>c</td><td>a</td><td>t</td><td></td><td>|</td><td></td><td>�</td><td>�</td><td></td><td>付</td><td>费</td><td></td><td>|</td><td></td><td>好</td><td>用</td><td>但</td><td>贵</td><td>，</td><td>个</td><td>人</td><td>慎</td><td>买</td><td></td><td></td></tr><tr><td></td><td></td><td>H</td><td>e</td><td>i</td><td>d</td><td>i</td><td>S</td><td>Q</td><td>L</td><td></td><td>|</td><td></td><td>免</td><td>费</td><td></td><td>|</td><td></td><td>轻</td><td>量</td><td>老</td><td>牌</td><td></td><td></td></tr></tbody></table></div>
+<p>连接参数四件套：主机 <code>localhost</code>、端口 <code>3306</code>、用户 <code>root</code>、密码你设的。</p>
+<p>## 💡 另一条路：用 Docker 跑 MySQL（学完第 6 章的可以玩）</p>
+<pre><code class="language-powershell">docker run -d --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:8</code></pre>
+<p>一条命令一个数据库，删了重开零残留。<strong>学习环境用 Docker 跑，正式项目再本地装服务</strong>，是更优雅的习惯。</p>
+<p>## 服务管理速查</p>
+<p>MySQL 装完就是个 Windows 服务（名字以安装向导为准，例如 MySQL80），开机自启。手动管理：</p>
+<pre><code class="language-powershell"># 管理员 PowerShell
+Get-Service MySQL80                 # 看状态
+Stop-Service MySQL80                # 停
+Start-Service MySQL80               # 起</code></pre>
+<p>## 常见坑</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>现</th><th>象</th><th></th><th>|</th><th></th><th>解</th><th>法</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>安</td><td>装</td><td>器</td><td>卡</td><td>在</td><td></td><td>S</td><td>t</td><td>a</td><td>r</td><td>t</td><td>i</td><td>n</td><td>g</td><td></td><td>t</td><td>h</td><td>e</td><td></td><td>s</td><td>e</td><td>r</td><td>v</td><td>e</td><td>r</td><td></td><td>|</td><td></td><td>3</td><td>3</td><td>0</td><td>6</td><td></td><td>被</td><td>占</td><td>（</td><td>第</td><td></td><td>8</td><td></td><td>章</td><td>）</td><td>或</td><td>之</td><td>前</td><td>残</td><td>留</td><td>过</td><td></td><td>M</td><td>y</td><td>S</td><td>Q</td><td>L</td><td></td><td>→</td><td></td><td>服</td><td>务</td><td>里</td><td>卸</td><td>干</td><td>净</td><td>旧</td><td>版</td><td>再</td><td>装</td><td></td><td></td></tr><tr><td></td><td></td><td>`</td><td>A</td><td>c</td><td>c</td><td>e</td><td>s</td><td>s</td><td></td><td>d</td><td>e</td><td>n</td><td>i</td><td>e</td><td>d</td><td></td><td>f</td><td>o</td><td>r</td><td></td><td>u</td><td>s</td><td>e</td><td>r</td><td></td><td>'</td><td>r</td><td>o</td><td>o</td><td>t</td><td>'</td><td>`</td><td></td><td>|</td><td></td><td>密</td><td>码</td><td>输</td><td>错</td><td>；</td><td>或</td><td>密</td><td>码</td><td>忘</td><td>了</td><td></td><td>→</td><td></td><td>搜</td><td>&quot;</td><td>M</td><td>y</td><td>S</td><td>Q</td><td>L</td><td>8</td><td></td><td>r</td><td>o</td><td>o</td><td>t</td><td></td><td>密</td><td>码</td><td>重</td><td>置</td><td>&quot;</td><td>，</td><td>照</td><td>教</td><td>程</td><td>一</td><td>步</td><td>步</td><td>来</td><td>（</td><td>思</td><td>路</td><td>是</td><td>先</td><td>跳</td><td>过</td><td>密</td><td>码</td><td>验</td><td>证</td><td>进</td><td>去</td><td>，</td><td>再</td><td>设</td><td>个</td><td>新</td><td>密</td><td>码</td><td>）</td><td></td><td></td></tr><tr><td></td><td></td><td>`</td><td>C</td><td>a</td><td>n</td><td>'</td><td>t</td><td></td><td>c</td><td>o</td><td>n</td><td>n</td><td>e</td><td>c</td><td>t</td><td>.</td><td>.</td><td>.</td><td></td><td>(</td><td>1</td><td>0</td><td>0</td><td>6</td><td>1</td><td>)</td><td>`</td><td></td><td>|</td><td></td><td>服</td><td>务</td><td>没</td><td>起</td><td>来</td><td>：</td><td>`</td><td>S</td><td>t</td><td>a</td><td>r</td><td>t</td><td>-</td><td>S</td><td>e</td><td>r</td><td>v</td><td>i</td><td>c</td><td>e</td><td></td><td>M</td><td>y</td><td>S</td><td>Q</td><td>L</td><td>8</td><td>0</td><td>`</td><td></td><td></td></tr><tr><td></td><td></td><td>老</td><td>程</td><td>序</td><td>连</td><td>不</td><td>上</td><td>报</td><td></td><td>`</td><td>c</td><td>a</td><td>c</td><td>h</td><td>i</td><td>n</td><td>g</td><td>_</td><td>s</td><td>h</td><td>a</td><td>2</td><td>_</td><td>p</td><td>a</td><td>s</td><td>s</td><td>w</td><td>o</td><td>r</td><td>d</td><td>`</td><td></td><td>|</td><td></td><td>首</td><td>选</td><td>*</td><td>*</td><td>升</td><td>级</td><td>老</td><td>程</td><td>序</td><td>的</td><td>数</td><td>据</td><td>库</td><td>驱</td><td>动</td><td>*</td><td>*</td><td>，</td><td>别</td><td>降</td><td>安</td><td>全</td><td>性</td><td>。</td><td>实</td><td>在</td><td>要</td><td>降</td><td>级</td><td>认</td><td>证</td><td>，</td><td>M</td><td>y</td><td>S</td><td>Q</td><td>L</td><td></td><td>8</td><td>.</td><td>0</td><td></td><td>可</td><td>执</td><td>行</td><td>：</td><td>`</td><td>A</td><td>L</td><td>T</td><td>E</td><td>R</td><td></td><td>U</td><td>S</td><td>E</td><td>R</td><td></td><td>'</td><td>r</td><td>o</td><td>o</td><td>t</td><td>'</td><td>@</td><td>'</td><td>l</td><td>o</td><td>c</td><td>a</td><td>l</td><td>h</td><td>o</td><td>s</td><td>t</td><td>'</td><td></td><td>I</td><td>D</td><td>E</td><td>N</td><td>T</td><td>I</td><td>F</td><td>I</td><td>E</td><td>D</td><td></td><td>W</td><td>I</td><td>T</td><td>H</td><td></td><td>m</td><td>y</td><td>s</td><td>q</td><td>l</td><td>_</td><td>n</td><td>a</td><td>t</td><td>i</td><td>v</td><td>e</td><td>_</td><td>p</td><td>a</td><td>s</td><td>s</td><td>w</td><td>o</td><td>r</td><td>d</td><td></td><td>B</td><td>Y</td><td></td><td>'</td><td>你</td><td>的</td><td>密</td><td>码</td><td>'</td><td>;</td><td>`</td><td>；</td><td>⚠</td><td>️</td><td></td><td>*</td><td>*</td><td>M</td><td>y</td><td>S</td><td>Q</td><td>L</td><td></td><td>8</td><td>.</td><td>4</td><td></td><td>起</td><td>该</td><td>插</td><td>件</td><td>默</td><td>认</td><td>禁</td><td>用</td><td>*</td><td>*</td><td>，</td><td>这</td><td>条</td><td>命</td><td>令</td><td>会</td><td>报</td><td>错</td><td>，</td><td>需</td><td>要</td><td>额</td><td>外</td><td>开</td><td>启</td><td>插</td><td>件</td><td>，</td><td>不</td><td>建</td><td>议</td><td>新</td><td>手</td><td>折</td><td>腾</td><td></td><td></td></tr><tr><td></td><td></td><td>命</td><td>令</td><td>行</td><td>里</td><td>中</td><td>文</td><td>乱</td><td>码</td><td></td><td>|</td><td></td><td>连</td><td>接</td><td>后</td><td>执</td><td>行</td><td></td><td>`</td><td>S</td><td>E</td><td>T</td><td></td><td>N</td><td>A</td><td>M</td><td>E</td><td>S</td><td></td><td>u</td><td>t</td><td>f</td><td>8</td><td>m</td><td>b</td><td>4</td><td>;</td><td>`</td><td>，</td><td>建</td><td>库</td><td>建</td><td>表</td><td>统</td><td>一</td><td>用</td><td></td><td>u</td><td>t</td><td>f</td><td>8</td><td>m</td><td>b</td><td>4</td><td></td><td></td></tr></tbody></table></div>
+<p>## ✅ 验证全部完成</p>
+<pre><code class="language-powershell">mysql --version      # ✓ 有版本
+mysql -u root -p     # ✓ 能进入 mysql&gt; 提示符
+SHOW DATABASES;      # ✓ 能看到库列表</code></pre>
+<hr>
+<p><a href="06-DockerDesktop安装与国内镜像.html">← 上一章</a> ｜ <a href="08-报错急救手册-环境变量端口占用权限问题.html">第 8 章：报错急救手册 →</a> ｜ <a href="../index.html">← 返回目录</a></p>
+
+<div class="pager"><a class="prev" href="../02-环境部署篇/06-DockerDesktop安装与国内镜像.html">← DockerDesktop安装与国内镜像</a><a class="next" href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题 →</a></div>
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>

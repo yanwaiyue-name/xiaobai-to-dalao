@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Java环境部署（JDK选择与环境变量） · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="../index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="../index.html">首页</a></li><li><a href="../00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="../10-官方网址速查表.html">官方网址速查表</a></li><li><a href="../11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li></ul><div class="grp">科学上网篇</div><ul><li><a href="../01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="../01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a href="../01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="../01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="../01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="../01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a href="../01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="../01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="../02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a href="../02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a class="active" href="../02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="../02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a href="../02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a href="../02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a href="../02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="../99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<h1 id="02-环境部署篇-第-4-章java-环境部署jdk-选择与环境变量">02 环境部署篇 · 第 4 章：Java 环境部署（JDK 选择与环境变量）</h1>
+<p><a href="03-NodeJS环境部署（nvm管理）.html">← 上一章</a> ｜ <a href="../index.html">返回目录</a> ｜ <a href="05-VSCode安装与必备插件.html">第 5 章：VS Code 安装与必备插件 →</a></p>
+<h2 id="这章解决什么问题">这章解决什么问题</h2>
+<ul>
+<li>知道装哪个 JDK（版本多、发行商多，小白最容易懵）</li>
+<li>配好 <code>JAVA_HOME</code> 和 <code>Path</code>——Java 界的经典必修课</li>
+<li>验证 <code>java</code> 和 <code>javac</code> 都能跑</li>
+</ul>
+<h2 id="先搞懂jdk-怎么选">先搞懂：JDK 怎么选</h2>
+<h3 id="版本大版本号">版本（大版本号）</h3>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>版</th><th>本</th><th></th><th>|</th><th></th><th>定</th><th>位</th><th></th><th>|</th><th></th><th>建</th><th>议</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>J</td><td>D</td><td>K</td><td></td><td>8</td><td></td><td>|</td><td></td><td>老</td><td>项</td><td>目</td><td>钉</td><td>子</td><td>户</td><td></td><td>|</td><td></td><td>只</td><td>在</td><td>跑</td><td>别</td><td>人</td><td>老</td><td>项</td><td>目</td><td>时</td><td>装</td><td></td><td></td></tr><tr><td></td><td></td><td>J</td><td>D</td><td>K</td><td></td><td>1</td><td>1</td><td></td><td>/</td><td></td><td>1</td><td>7</td><td></td><td>|</td><td></td><td>老</td><td>企</td><td>业</td><td>项</td><td>目</td><td>常</td><td>见</td><td></td><td>|</td><td></td><td>跟</td><td>课</td><td>程</td><td>/</td><td>教</td><td>程</td><td>走</td><td></td><td></td></tr><tr><td></td><td></td><td>J</td><td>D</td><td>K</td><td></td><td>2</td><td>1</td><td></td><td>|</td><td></td><td>上</td><td>一</td><td>个</td><td></td><td>L</td><td>T</td><td>S</td><td>，</td><td>生</td><td>态</td><td>成</td><td>熟</td><td></td><td>|</td><td></td><td>课</td><td>程</td><td>或</td><td>公</td><td>司</td><td>指</td><td>定</td><td></td><td>2</td><td>1</td><td></td><td>就</td><td>装</td><td></td><td>2</td><td>1</td><td></td><td></td></tr><tr><td></td><td></td><td>*</td><td>*</td><td>J</td><td>D</td><td>K</td><td></td><td>2</td><td>5</td><td>*</td><td>*</td><td></td><td>|</td><td></td><td>最</td><td>新</td><td></td><td>L</td><td>T</td><td>S</td><td>（</td><td>长</td><td>期</td><td>支</td><td>持</td><td>）</td><td></td><td>|</td><td></td><td>*</td><td>*</td><td>新</td><td>学</td><td>习</td><td>项</td><td>目</td><td>直</td><td>接</td><td>装</td><td>这</td><td>个</td><td>*</td><td>*</td><td></td><td></td></tr></tbody></table></div>
+<p>💡 LTS = Long Term Support，官方长期维护的版本，<strong>没有特殊理由就装最新 LTS</strong>。</p>
+<p>### 发行商</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>发</th><th>行</th><th>商</th><th></th><th>|</th><th></th><th>价</th><th>格</th><th></th><th>|</th><th></th><th>说</th><th>明</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>*</td><td>*</td><td>E</td><td>c</td><td>l</td><td>i</td><td>p</td><td>s</td><td>e</td><td></td><td>T</td><td>e</td><td>m</td><td>u</td><td>r</td><td>i</td><td>n</td><td>（</td><td>A</td><td>d</td><td>o</td><td>p</td><td>t</td><td>i</td><td>u</td><td>m</td><td>）</td><td>*</td><td>*</td><td></td><td>|</td><td></td><td>免</td><td>费</td><td></td><td>|</td><td></td><td>社</td><td>区</td><td>良</td><td>心</td><td>，</td><td>*</td><td>*</td><td>推</td><td>荐</td><td>*</td><td>*</td><td>，</td><td>下</td><td>载</td><td>方</td><td>便</td><td></td><td></td></tr><tr><td></td><td></td><td>O</td><td>r</td><td>a</td><td>c</td><td>l</td><td>e</td><td></td><td>J</td><td>D</td><td>K</td><td></td><td>|</td><td></td><td>注</td><td>意</td><td>授</td><td>权</td><td></td><td>|</td><td></td><td>官</td><td>方</td><td>出</td><td>品</td><td>，</td><td>商</td><td>用</td><td>授</td><td>权</td><td>有</td><td>坑</td><td>，</td><td>学</td><td>习</td><td>用</td><td>也</td><td>行</td><td></td><td></td></tr><tr><td></td><td></td><td>A</td><td>m</td><td>a</td><td>z</td><td>o</td><td>n</td><td></td><td>C</td><td>o</td><td>r</td><td>r</td><td>e</td><td>t</td><td>t</td><td>o</td><td></td><td>|</td><td></td><td>免</td><td>费</td><td></td><td>|</td><td></td><td>亚</td><td>马</td><td>逊</td><td>出</td><td>品</td><td>，</td><td>同</td><td>样</td><td>可</td><td>靠</td><td></td><td></td></tr></tbody></table></div>
+<p>## 第 1 步：下载 Temurin JDK 25</p>
+<ol>
+<li>打开 <strong>https://adoptium.net</strong>，页面会自动识别系统，直接点下载按钮（<code>.msi</code> 安装包）。页面上如果默认不是 25，手动在版本下拉里选 <strong>25 - LTS</strong>。</li>
+<li>⚠️ 国内直连 adoptium 慢的话：清华镜像 <strong>https://mirrors.tuna.tsinghua.edu.cn/Adoptium/</strong> → <code>25/jdk/x64/windows/</code> → 下 <code>.msi</code>。</li>
+</ol>
+<p>## 第 2 步：安装（记住安装路径）</p>
+<p>双击 <code>.msi</code> 安装：</p>
+<ul>
+<li>组件页面找到 <code>Set JAVA_HOME variable</code> 这一项，点它前面的下拉图标，选 <strong>Will be installed on local hard drive</strong>（安装到本地硬盘，图标不能是红叉）。这样装完它会自动帮你配好 <code>JAVA_HOME</code>。</li>
+<li>安装路径默认类似 <code>C:\Program Files\Eclipse Adoptium\jdk-25.x.x-hotspot\</code>，<strong>复制存好</strong>。</li>
+</ul>
+<p>## 第 3 步：配置环境变量</p>
+<p>装的时候勾了 JAVA_HOME 的话，这步基本自动完成了，但<strong>手动会配是必备技能</strong>（面试也考）：</p>
+<ol>
+<li>Win 键搜&quot;<strong>编辑系统环境变量</strong>&quot; → 环境变量。</li>
+<li><strong>系统变量</strong>区 → 新建：</li>
+</ol>
+<ul>
+<li>变量名：<code>JAVA_HOME</code></li>
+<li>变量值：<code>C:\Program Files\Eclipse Adoptium\jdk-25.x.x-hotspot</code>（你实际的路径）</li>
+</ul>
+<ol>
+<li>找到系统变量里的 <code>Path</code> → 编辑 → <strong>新建</strong>一行：</li>
+</ol>
+<ul>
+<li><code>%JAVA_HOME%\bin</code></li>
+</ul>
+<ol>
+<li>一路确定保存。</li>
+</ol>
+<p>## ✅ 验证</p>
+<p><strong>新开</strong> PowerShell（改完环境变量必须新开窗口）：</p>
+<pre><code class="language-powershell">java -version     # 输出 openjdk version &quot;25.x.x&quot;
+javac -version    # 输出 javac 25.x.x（有这个说明编译器也在）
+echo $env:JAVA_HOME   # 输出你配的路径</code></pre>
+<p>三个都对，Java 环境就绪。</p>
+<p>## 第 4 步：跑第一个程序</p>
+<p>建 <code>C:\code\java-demo\Hello.java</code>（<strong>文件名必须和类名一致</strong>）：</p>
+<pre><code class="language-java">public class Hello {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello, Java!&quot;);
+    }
+}</code></pre>
+<pre><code class="language-powershell">cd C:\code\java-demo
+javac Hello.java    # 编译，生成 Hello.class
+java Hello          # 运行，输出 Hello, Java!</code></pre>
+<p>## 💡 多版本共存</p>
+<p>要同时有 JDK 8 和 25？装两份、<code>JAVA_HOME</code> 指向哪个用哪个。真正开发后建议用 IDEA / VS Code 的 JDK 管理功能按项目切换，命令行层不用折腾。</p>
+<p>## 常见坑</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>现</th><th>象</th><th></th><th>|</th><th></th><th>解</th><th>法</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>`</td><td>'</td><td>j</td><td>a</td><td>v</td><td>a</td><td>c</td><td>'</td><td></td><td>不</td><td>是</td><td>内</td><td>部</td><td>或</td><td>外</td><td>部</td><td>命</td><td>令</td><td>`</td><td>（</td><td>但</td><td></td><td>j</td><td>a</td><td>v</td><td>a</td><td></td><td>有</td><td>）</td><td></td><td>|</td><td></td><td>P</td><td>a</td><td>t</td><td>h</td><td></td><td>里</td><td>没</td><td></td><td>`</td><td>%</td><td>J</td><td>A</td><td>V</td><td>A</td><td>_</td><td>H</td><td>O</td><td>M</td><td>E</td><td>%</td><td>\</td><td>b</td><td>i</td><td>n</td><td>`</td><td>，</td><td>或</td><td>写</td><td>的</td><td>具</td><td>体</td><td>路</td><td>径</td><td>拼</td><td>错</td><td>了</td><td></td><td></td></tr><tr><td></td><td></td><td>改</td><td>了</td><td>环</td><td>境</td><td>变</td><td>量</td><td>还</td><td>是</td><td>不</td><td>行</td><td></td><td>|</td><td></td><td>没</td><td>重</td><td>开</td><td>终</td><td>端</td><td>；</td><td>实</td><td>在</td><td>不</td><td>行</td><td>注</td><td>销</td><td>重</td><td>登</td><td></td><td></td></tr><tr><td></td><td></td><td>`</td><td>错</td><td>误</td><td>:</td><td></td><td>找</td><td>不</td><td>到</td><td>或</td><td>无</td><td>法</td><td>加</td><td>载</td><td>主</td><td>类</td><td>`</td><td></td><td>|</td><td></td><td>类</td><td>名</td><td>与</td><td>文</td><td>件</td><td>名</td><td>不</td><td>一</td><td>致</td><td></td><td>/</td><td></td><td>在</td><td>错</td><td>误</td><td>目</td><td>录</td><td>里</td><td>执</td><td>行</td><td></td><td>/</td><td></td><td>带</td><td>了</td><td></td><td>`</td><td>.</td><td>c</td><td>l</td><td>a</td><td>s</td><td>s</td><td>`</td><td></td><td>后</td><td>缀</td><td>（</td><td>运</td><td>行</td><td>时</td><td>不</td><td>带</td><td>）</td><td></td><td></td></tr><tr><td></td><td></td><td>装</td><td>了</td><td></td><td>O</td><td>r</td><td>a</td><td>c</td><td>l</td><td>e</td><td></td><td>J</td><td>D</td><td>K</td><td></td><td>提</td><td>示</td><td>授</td><td>权</td><td></td><td>|</td><td></td><td>学</td><td>习</td><td>用</td><td>途</td><td>没</td><td>影</td><td>响</td><td>；</td><td>介</td><td>意</td><td>就</td><td>换</td><td></td><td>T</td><td>e</td><td>m</td><td>u</td><td>r</td><td>i</td><td>n</td><td></td><td></td></tr><tr><td></td><td></td><td>I</td><td>D</td><td>E</td><td></td><td>里</td><td>选</td><td>不</td><td>到</td><td></td><td>J</td><td>D</td><td>K</td><td></td><td>|</td><td></td><td>I</td><td>D</td><td>E</td><td>A</td><td>/</td><td>V</td><td>S</td><td></td><td>C</td><td>o</td><td>d</td><td>e</td><td></td><td>里</td><td>手</td><td>动</td><td>指</td><td>向</td><td></td><td>`</td><td>%</td><td>J</td><td>A</td><td>V</td><td>A</td><td>_</td><td>H</td><td>O</td><td>M</td><td>E</td><td>%</td><td>`</td><td></td><td>路</td><td>径</td><td></td><td></td></tr></tbody></table></div>
+<p>## ✅ 验证全部完成</p>
+<pre><code class="language-powershell">java -version     # ✓
+javac -version    # ✓
+java Hello        # 输出 Hello, Java!</code></pre>
+<hr>
+<p><a href="03-NodeJS环境部署（nvm管理）.html">← 上一章</a> ｜ <a href="05-VSCode安装与必备插件.html">第 5 章：VS Code 安装与必备插件 →</a> ｜ <a href="../index.html">← 返回目录</a></p>
+
+<div class="pager"><a class="prev" href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">← NodeJS环境部署（nvm管理）</a><a class="next" href="../02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件 →</a></div>
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>

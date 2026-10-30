@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>社区精选问答-Git与GitHub-WSL-Docker · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="../index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="../index.html">首页</a></li><li><a href="../00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="../10-官方网址速查表.html">官方网址速查表</a></li><li><a href="../11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li></ul><div class="grp">科学上网篇</div><ul><li><a href="../01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="../01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a href="../01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="../01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="../01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="../01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a href="../01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="../01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="../02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a href="../02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a href="../02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="../02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a href="../02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a href="../02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a class="active" href="../02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="../99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<h1 id="02-环境部署篇-第-9-章社区精选问答github-stack-overflow-高频问题">02 环境部署篇 · 第 9 章：社区精选问答（GitHub / Stack Overflow 高频问题）</h1>
+<p><a href="08-报错急救手册-环境变量端口占用权限问题.html">← 上一章</a> ｜ <a href="../index.html">返回目录</a></p>
+<h2 id="这章解决什么问题">这章解决什么问题</h2>
+<p>本章整理自 GitHub 官方文档、Stack Overflow、CSDN、知乎、微软官方文档上的<strong>真实高频提问</strong>——都是被问过成千上万次、有标准答案的经典问题。每题附出处链接可溯源。</p>
+<p>⚠️ 外部链接会随时间失效，打不开时用报错原文搜索即可。</p>
+<hr>
+<h2 id="一git-github-类">一、Git / GitHub 类</h2>
+<h3 id="q1git-push-报-rejected-non-fast-forward推不上去">Q1：<code>git push</code> 报 <code>! [rejected] ... (non-fast-forward)</code>，推不上去</h3>
+<p><strong>答</strong>：远程仓库有你本地没有的提交（同事推过，或你在网页上改过文件）。<strong>不要急着重装 Git</strong>，先拉再推：</p>
+<pre><code class="language-powershell">git pull --rebase origin main
+git push origin main</code></pre>
+<p>实在确定要覆盖远程（团队协作中慎用）：用 <code>git push --force-with-lease</code>，比直接用 <code>git push --force</code> 多一道保险——万一远程在这期间又有了新提交，它会拒绝执行，防止你误删别人的工作。</p>
+<blockquote><p>📎 出处：<a href="https://docs.github.com/zh/get-started/using-git/dealing-with-non-fast-forward-errors">GitHub 官方文档：处理非快进错误</a> ｜ <a href="https://stackoverflow.com/questions/4684352/what-does-git-push-non-fast-forward-updates-were-rejected-mean">Stack Overflow: What does &quot;non-fast-forward updates were rejected&quot; mean</a> ｜ <a href="https://blog.csdn.net/index20001/article/details/99764558">CSDN：git push rejected 解决</a> ｜ [知乎：git push 出现 ! [rejected] 错误](https://zhuanlan.zhihu.com/p/707863606)</p></blockquote>
+<h3 id="q2fatal-not-a-git-repository">Q2：<code>fatal: not a git repository</code></h3>
+<p><strong>答</strong>：你在<strong>不是仓库的目录</strong>里运行了 git 命令。<code>cd</code> 到项目根目录（里面藏着 <code>.git</code> 文件夹的那层）；目录里确实没有 <code>.git</code> 就先 <code>git init</code>。用 <code>ls -a</code> 确认。</p>
+<blockquote><p>📎 出处：<a href="https://git-scm.com/book/zh/v2">Pro Git 中文版（官方书，Git 问题终极字典）</a></p></blockquote>
+<h3 id="q3git-clone-git-push-超时报-failed-to-connect-to-githubcom-port-443">Q3：<code>git clone</code> / <code>git push</code> 超时，报 <code>Failed to connect to github.com port 443</code></h3>
+<p><strong>答</strong>：本仓库第 1 章给了完整代理方案，社区文章里还有一个<strong>进阶技巧值得收录</strong>——只让 GitHub 走代理、其他仓库直连：</p>
+<pre><code class="language-powershell">git config --global http.https://github.com.proxy http://127.0.0.1:7897</code></pre>
+<p>（端口换成你自己客户端的。公司内网 GitLab 等不受影响，这招在&quot;代理软件时开时关&quot;的场景也更好用。）其余方法：改 hosts 绑定 IP、镜像加速前缀。</p>
+<blockquote><p>📎 出处：<a href="https://blog.csdn.net/caiji00001/article/details/142302401">CSDN：Github 可以访问但 git clone 报 443 超时</a> ｜ <a href="https://blog.csdn.net/weixin_62703679/article/details/136610236">CSDN：git 连接 443 超时解决</a> ｜ <a href="https://zhuanlan.zhihu.com/p/636418854">知乎：解决 Github port 443 Timed out</a></p></blockquote>
+<h3 id="q4gitignore-写了却还在被跟踪不生效">Q4：<code>.gitignore</code> 写了却还在被跟踪（不生效）</h3>
+<p><strong>答</strong>：<code>.gitignore</code> 只对<strong>未跟踪</strong>的文件生效。文件已经被 commit 过，加进 .gitignore 也没用。解法（<code>--cached</code> 参数保证<strong>不删本地文件</strong>）：</p>
+<pre><code class="language-powershell">git rm -r --cached .
+git add .
+git commit -m &quot;chore: 应用 .gitignore&quot;</code></pre>
+<blockquote><p>📎 出处：<a href="https://stackoverflow.com/questions/64807023/git-still-tracks-files-in-gitignore-file">Stack Overflow: Git still tracks files in gitignore file</a> ｜ <a href="https://blog.csdn.net/liuruiaaa/article/details/145950703">CSDN：.gitignore 不生效解决</a></p></blockquote>
+<h3 id="q5git-里中文文件名显示成-346226207344273256-乱码">Q5：git 里中文文件名显示成 <code>\346\226\207\344\273\256</code> 乱码</h3>
+<p><strong>答</strong>：一条命令关闭转义显示：</p>
+<pre><code class="language-powershell">git config --global core.quotepath false</code></pre>
+<p>终端里还乱的话再配 <code>git config --global i18n.logoutputencoding utf-8</code> 并把终端编码调成 UTF-8。</p>
+<blockquote><p>📎 出处：<a href="https://blog.miniasp.com/post/2017/09/17/Git-for-Windows-Command-Prompt-Display-Chinese-Issues">miniasp 博客：Git for Windows 中文显示问题</a></p></blockquote>
+<h2 id="二wsl-docker-类">二、WSL / Docker 类</h2>
+<h3 id="q6装-wsl2-报错-0x80370102">Q6：装 WSL2 报错 <code>0x80370102</code></h3>
+<p><strong>答</strong>：这是&quot;虚拟化没启用或虚拟机平台没开&quot;的专用错误码，三步修：</p>
+<ol>
+<li>BIOS 里开 CPU 虚拟化（Intel VT-x / AMD-V；任务管理器 → 性能 → CPU 看是否&quot;已启用&quot;）</li>
+<li>Windows 功能里勾选&quot;<strong>虚拟机平台</strong>&quot;和&quot;<strong>适用于 Linux 的 Windows 子系统</strong>&quot;，重启</li>
+<li><code>wsl --update</code> 更新内核</li>
+</ol>
+<blockquote><p>📎 出处：<a href="https://learn.microsoft.com/zh-cn/windows/wsl/troubleshooting">微软官方文档：排查 WSL 问题</a></p></blockquote>
+<h3 id="q7docker-pull-报-eof-failed-to-copy-一直卡住">Q7：<code>docker pull</code> 报 EOF / failed to copy / 一直卡住</h3>
+<p><strong>答</strong>：国内直连 Docker Hub 基本拉不动。配镜像加速器（地址经常失效，失效就搜新的换上）：</p>
+<pre><code class="language-json">{ &quot;registry-mirrors&quot;: [&quot;https://docker.1ms.run&quot;, &quot;https://docker.m.daocloud.io&quot;] }</code></pre>
+<p>Docker Desktop 在设置 → Docker Engine 里改；Linux 在 <code>/etc/docker/daemon.json</code> 改后 <code>systemctl restart docker</code>。最后兜底手段是给 Docker 配代理（设置 → Resources → Proxies）。</p>
+<blockquote><p>📎 出处：<a href="https://blog.csdn.net/blink182007/article/details/151062752">CSDN：WSL2 Docker Desktop 拉取镜像报错</a> ｜ <a href="https://blog.csdn.net/qq_31362767/article/details/149616105">CSDN：WSL 中无法访问 registry-1.docker.io</a></p></blockquote>
+<h3 id="q8docker-desktop-一直转圈起不来wsl-环境">Q8：Docker Desktop 一直转圈起不来（WSL 环境）</h3>
+<p><strong>答</strong>：社区验证过的重启三连：</p>
+<pre><code class="language-powershell">wsl --update
+wsl --shutdown
+# 然后重新打开 Docker Desktop</code></pre>
+<blockquote><p>📎 出处：<a href="https://blog.csdn.net/2303_80806493/article/details/147874710">CSDN：Docker 在 WSL 环境启动失败</a></p></blockquote>
+<h3 id="q9wsl-安装启动报配置相关错误wslconfig">Q9：WSL 安装/启动报配置相关错误（<code>.wslconfig</code>）</h3>
+<p><strong>答</strong>：安装程序<strong>不会自动生成</strong> <code>.wslconfig</code>，需要时手动创建 <code>C:\Users\你的用户名\.wslconfig</code>；旧的残缺配置文件反而会引发安装失败，删掉重配。</p>
+<blockquote><p>📎 出处：<a href="https://blog.csdn.net/usstmiracle/article/details/161613196">CSDN：安装 WSL2 报错与 .wslconfig</a></p></blockquote>
+<hr>
+<h2 id="顺便学一下在-stack-overflow-github-提问的正确姿势">💡 顺便学一下：在 Stack Overflow / GitHub 提问的正确姿势</h2>
+<ul>
+<li>标题直接写<strong>完整报错原文</strong>（搜索引擎和回答者都靠它匹配）</li>
+<li>附上：操作系统、软件版本、复现步骤、已试过什么</li>
+<li>先搜后问：你的报错 99% 有人问过，<strong>会搜索本身就是大佬核心技能</strong></li>
+</ul>
+<hr>
+<p><a href="08-报错急救手册-环境变量端口占用权限问题.html">← 上一章</a> ｜ <a href="../index.html">← 返回目录</a></p>
+
+<div class="pager"><a class="prev" href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">← 报错急救手册-环境变量端口占用权限问题</a><a class="next" href="../10-官方网址速查表.html">官方网址速查表 →</a></div>
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DockerDesktop安装与国内镜像 · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="../index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="../index.html">首页</a></li><li><a href="../00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="../10-官方网址速查表.html">官方网址速查表</a></li><li><a href="../11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li></ul><div class="grp">科学上网篇</div><ul><li><a href="../01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="../01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a href="../01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="../01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="../01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="../01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a href="../01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="../01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="../02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a href="../02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a href="../02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="../02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a class="active" href="../02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a href="../02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a href="../02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="../99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<h1 id="02-环境部署篇-第-6-章docker-desktop-安装与国内镜像">02 环境部署篇 · 第 6 章：Docker Desktop 安装与国内镜像</h1>
+<p><a href="05-VSCode安装与必备插件.html">← 上一章</a> ｜ <a href="../index.html">返回目录</a> ｜ <a href="07-MySQL数据库安装.html">第 7 章：MySQL 数据库安装 →</a></p>
+<h2 id="这章解决什么问题">这章解决什么问题</h2>
+<ul>
+<li>在 Windows 上装好 Docker Desktop（含 WSL2 前置条件）</li>
+<li>解决国内 <code>docker pull</code> 拉不动镜像的经典难题</li>
+</ul>
+<h2 id="docker-是什么30-秒版">Docker 是什么（30 秒版）</h2>
+<p>把软件和它的全部依赖打包成一个<strong>集装箱（镜像）</strong>，任何装了 Docker 的电脑都能原样跑起来——&quot;在我电脑上是好的&quot;这句话从此失效。小白阶段你只需要会 <code>run</code> 就够。</p>
+<h2 id="前置要求两道门槛">前置要求（两道门槛）</h2>
+<ol>
+<li><strong>系统</strong>：Windows 10/11 64 位。</li>
+<li><strong>虚拟化</strong>：BIOS 里开启（大多数电脑默认已开）。任务管理器 → 性能 → CPU → 右下角看&quot;<strong>虚拟化：已启用</strong>&quot;。显示&quot;已禁用&quot;就去搜&quot;你的电脑型号 + BIOS 开启虚拟化&quot;。</li>
+</ol>
+<h2 id="第-1-步装-wsl2docker-的地基">第 1 步：装 WSL2（Docker 的地基）</h2>
+<p>管理员 PowerShell 执行：</p>
+<pre><code class="language-powershell">wsl --install</code></pre>
+<p>它会自动装好 WSL2 和 Ubuntu。<strong>执行完重启电脑</strong>。</p>
+<p>重启后可能让你给 Ubuntu 设个用户名密码（随便设，记住即可）。验证：</p>
+<pre><code class="language-powershell">wsl --status    # 默认版本显示 2 即成功</code></pre>
+<p>💡 报 <code>wsl --update</code> 相关错？执行 <code>wsl --update --web-download</code>，或手动从 https://github.com/microsoft/WSL/releases 下载最新的 <code>.msi</code>。</p>
+<h2 id="第-2-步安装-docker-desktop">第 2 步：安装 Docker Desktop</h2>
+<ol>
+<li>官网：<strong>https://www.docker.com/products/docker-desktop/</strong> → Download for Windows。</li>
+<li>双击安装，勾选 <strong>Use WSL 2 instead of Hyper-V</strong>，一路下一步。</li>
+<li>装完启动，右下角托盘出现鲸鱼图标且不报错 = 运行中。</li>
+</ol>
+<h2 id="验证">✅ 验证</h2>
+<pre><code class="language-powershell">docker --version
+docker run hello-world</code></pre>
+<p>第二条会先拉镜像再输出 <code>Hello from Docker!</code>——<strong>如果拉不下来，就是第 3 步要解决的事</strong>。</p>
+<h2 id="第-3-步配置国内镜像加速必做">第 3 步：配置国内镜像加速（必做）</h2>
+<p>国内直连 Docker Hub 基本拉不动，需要配<strong>镜像加速器</strong>。</p>
+<p>⚠️ <strong>重要认知</strong>：加速地址经常失效（历史原因，你懂的），<strong>别背具体网址，学会配置方法 + 会找最新可用地址</strong>。搜&quot;Docker Hub 国内镜像加速 可用&quot;，挑近三个月内文章里验证过的。</p>
+<p>配置方法：Docker Desktop → 设置（齿轮）→ <strong>Docker Engine</strong>，把 JSON 改成（下面两个地址只是写作时的示例，<strong>不保证长期可用</strong>，失效就按上面的方法换新的）：</p>
+<pre><code class="language-json">{
+  &quot;builder&quot;: {
+    &quot;gc&quot;: {
+      &quot;defaultKeepStorage&quot;: &quot;20GB&quot;,
+      &quot;enabled&quot;: true
+    }
+  },
+  &quot;experimental&quot;: false,
+  &quot;registry-mirrors&quot;: [
+    &quot;https://docker.1ms.run&quot;,
+    &quot;https://docker.xuanyuan.me&quot;
+  ]
+}</code></pre>
+<p>点 <strong>Apply &amp; restart</strong>，再跑一次 <code>docker run hello-world</code>。</p>
+<p>💡 还有两条备选路：</p>
+<ul>
+<li>镜像站挂了就搜&quot;docker hub 镜像&quot;换新的地址；</li>
+<li>实在不行，给 Docker 挂代理：设置 → Resources → Proxies，填你客户端的 <code>http://127.0.0.1:7897</code>。</li>
+</ul>
+<h2 id="第-4-步跑第一个真实容器">第 4 步：跑第一个真实容器</h2>
+<pre><code class="language-powershell">docker run -d -p 8080:80 --name my-nginx nginx</code></pre>
+<p>💡 <code>-p 8080:80</code> 的意思：把你电脑的 8080 号&quot;门牌&quot;接到容器的 80 号门上，以后访问本机 8080 就等于访问这个容器。</p>
+<p>浏览器打开 <strong>http://localhost:8080</strong>，看到 Nginx 欢迎页 = 你在本地跑起了一个网站服务器。用完清理：</p>
+<pre><code class="language-powershell">docker stop my-nginx
+docker rm my-nginx</code></pre>
+<h2 id="常用命令速查">常用命令速查</h2>
+<pre><code class="language-powershell">docker ps                # 看在跑的容器
+docker ps -a             # 看所有容器（含停止的）
+docker images            # 看本地镜像
+docker logs 容器名        # 看容器日志（排错第一入口）
+docker stop/rm 容器名     # 停止/删除容器
+docker rmi 镜像名         # 删除镜像</code></pre>
+<h2 id="常见坑">常见坑</h2>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>现</th><th>象</th><th></th><th>|</th><th></th><th>解</th><th>法</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>安</td><td>装</td><td>时</td><td>报</td><td>&quot;</td><td>W</td><td>S</td><td>L</td><td></td><td>2</td><td></td><td>i</td><td>n</td><td>s</td><td>t</td><td>a</td><td>l</td><td>l</td><td>a</td><td>t</td><td>i</td><td>o</td><td>n</td><td></td><td>i</td><td>s</td><td></td><td>i</td><td>n</td><td>c</td><td>o</td><td>m</td><td>p</td><td>l</td><td>e</td><td>t</td><td>e</td><td>&quot;</td><td></td><td>|</td><td></td><td>`</td><td>w</td><td>s</td><td>l</td><td></td><td>-</td><td>-</td><td>u</td><td>p</td><td>d</td><td>a</td><td>t</td><td>e</td><td>`</td><td></td><td>后</td><td>重</td><td>启</td><td>电</td><td>脑</td><td></td><td></td></tr><tr><td></td><td></td><td>D</td><td>o</td><td>c</td><td>k</td><td>e</td><td>r</td><td></td><td>D</td><td>e</td><td>s</td><td>k</td><td>t</td><td>o</td><td>p</td><td></td><td>一</td><td>直</td><td>转</td><td>圈</td><td>起</td><td>不</td><td>来</td><td></td><td>|</td><td></td><td>确</td><td>认</td><td>虚</td><td>拟</td><td>化</td><td>已</td><td>启</td><td>用</td><td>；</td><td>托</td><td>盘</td><td>退</td><td>出</td><td>重</td><td>开</td><td>；</td><td>重</td><td>启</td><td>大</td><td>法</td><td></td><td></td></tr><tr><td></td><td></td><td>`</td><td>p</td><td>u</td><td>l</td><td>l</td><td>`</td><td></td><td>一</td><td>直</td><td>超</td><td>时</td><td></td><td>|</td><td></td><td>镜</td><td>像</td><td>加</td><td>速</td><td>地</td><td>址</td><td>失</td><td>效</td><td>，</td><td>换</td><td>新</td><td>的</td><td>（</td><td>第</td><td></td><td>3</td><td></td><td>步</td><td>）</td><td></td><td></td></tr><tr><td></td><td></td><td>`</td><td>p</td><td>o</td><td>r</td><td>t</td><td></td><td>i</td><td>s</td><td></td><td>a</td><td>l</td><td>r</td><td>e</td><td>a</td><td>d</td><td>y</td><td></td><td>a</td><td>l</td><td>l</td><td>o</td><td>c</td><td>a</td><td>t</td><td>e</td><td>d</td><td>`</td><td></td><td>|</td><td></td><td>8</td><td>0</td><td>8</td><td>0</td><td></td><td>被</td><td>占</td><td>，</td><td>换</td><td>端</td><td>口</td><td></td><td>`</td><td>-</td><td>p</td><td></td><td>8</td><td>8</td><td>8</td><td>8</td><td>:</td><td>8</td><td>0</td><td>`</td><td>，</td><td>或</td><td>看</td><td>第</td><td></td><td>8</td><td></td><td>章</td><td>杀</td><td>进</td><td>程</td><td></td><td></td></tr><tr><td></td><td></td><td>C</td><td></td><td>盘</td><td>被</td><td>吃</td><td>掉</td><td>几</td><td>十</td><td></td><td>G</td><td>B</td><td></td><td>|</td><td></td><td>设</td><td>置</td><td></td><td>→</td><td></td><td>R</td><td>e</td><td>s</td><td>o</td><td>u</td><td>r</td><td>c</td><td>e</td><td>s</td><td></td><td>→</td><td></td><td>A</td><td>d</td><td>v</td><td>a</td><td>n</td><td>c</td><td>e</td><td>d</td><td></td><td>把</td><td>磁</td><td>盘</td><td>镜</td><td>像</td><td>位</td><td>置</td><td>挪</td><td>到</td><td></td><td>D</td><td></td><td>盘</td><td></td><td></td></tr></tbody></table></div>
+<p>## ✅ 验证全部完成</p>
+<pre><code class="language-powershell">docker --version        # ✓
+docker run hello-world  # 输出 Hello from Docker!
+docker run -d -p 8080:80 nginx  # localhost:8080 有欢迎页</code></pre>
+<hr>
+<p><a href="05-VSCode安装与必备插件.html">← 上一章</a> ｜ <a href="07-MySQL数据库安装.html">第 7 章：MySQL 数据库安装 →</a> ｜ <a href="../index.html">← 返回目录</a></p>
+
+<div class="pager"><a class="prev" href="../02-环境部署篇/05-VSCode安装与必备插件.html">← VSCode安装与必备插件</a><a class="next" href="../02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装 →</a></div>
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>

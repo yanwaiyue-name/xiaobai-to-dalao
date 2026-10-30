@@ -633,3 +633,10 @@ for ($k = 0; $k -lt $pages.Count; $k++) {
 
 Write-Output ("站点已生成：" + ($pages.Count + $script:ExtraPageCount) + " 个页面 -> " + $OutDir)
 
+# 同步一份到仓库内的 html/：Gitee 没有 Pages，国内读者需要一个不依赖外部托管的入口。
+# 注意不能放进 docs/ —— docs/ 是 Markdown 源目录，混进 HTML 会让下次构建把产物当源再解析一遍。
+$mirror = Join-Path $root 'html'
+if (Test-Path -LiteralPath $mirror) { Remove-Item -LiteralPath $mirror -Recurse -Force }
+Copy-Item -LiteralPath $OutDir -Destination $mirror -Recurse -Force
+Write-Output ("已同步到 html/（供 Gitee 仓库内直接打开）：" + $mirror)
+

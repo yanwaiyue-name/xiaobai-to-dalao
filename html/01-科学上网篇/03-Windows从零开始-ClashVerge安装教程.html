@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Windows从零开始-ClashVerge安装教程 · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="../index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="../index.html">首页</a></li><li><a href="../00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="../10-官方网址速查表.html">官方网址速查表</a></li><li><a href="../11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li></ul><div class="grp">科学上网篇</div><ul><li><a href="../01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="../01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a class="active" href="../01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="../01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="../01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="../01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a href="../01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="../01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="../02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a href="../02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a href="../02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="../02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a href="../02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a href="../02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a href="../02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="../99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<h1 id="01-科学上网篇-第-3-章windows-从零开始clash-verge-安装教程">01 科学上网篇 · 第 3 章：Windows 从零开始：Clash Verge 安装教程</h1>
+<p><a href="02-客户端怎么选（全平台）.html">← 上一章</a> ｜ <a href="../index.html">返回目录</a> ｜ <a href="04-订阅链接导入与更新.html">第 4 章：订阅导入与更新 →</a></p>
+<h2 id="这章解决什么问题">这章解决什么问题</h2>
+<p>在一台全新 Windows 电脑上，从下载 Clash Verge Rev 到&quot;系统能访问 GitHub&quot;，全流程不超过 15 分钟。</p>
+<h2 id="前置要求">前置要求</h2>
+<ul>
+<li>Windows 10 / 11（64 位）</li>
+<li>还没有订阅？先跳到第 5 章了解怎么选机场，拿到订阅链接再回来。</li>
+</ul>
+<h2 id="第-1-步下载安装包">第 1 步：下载安装包</h2>
+<ol>
+<li>打开官方 Releases 页面：<strong>https://github.com/clash-verge-rev/clash-verge-rev/releases</strong></li>
+<li>找到最新版本，下载名字类似 <code>Clash.Verge_x.x.x_x64-setup.exe</code> 的安装包（x64 版）。</li>
+</ol>
+<p>⚠️ <strong>GitHub 打不开怎么办</strong>（你八成会卡在这）：</p>
+<ul>
+<li>方法 1：让已经能上网的朋友帮你下载，或用手机流量试。</li>
+<li>方法 2：搜索&quot;GitHub 加速 镜像&quot;，用 GitHub 文件加速站拼链接（这类站点经常更换，用前确认口碑）。</li>
+<li>方法 3：装好后你会拥有整条隧道，以后就不需要这些歪招了——<strong>第一晚最难受，之后就顺了</strong>。</li>
+</ul>
+<h2 id="第-2-步安装">第 2 步：安装</h2>
+<ol>
+<li>双击 <code>Clash.Verge_x.x.x_x64-setup.exe</code>。</li>
+<li>安装模式选&quot;<strong>仅为我安装</strong>&quot;（不需要管理员权限，最省事）。</li>
+<li>一路下一步，完成。</li>
+<li>如果它提示还要装一个叫 WebView2 的组件，点同意就行（Win11 一般自带，不用懂它是啥）。</li>
+</ol>
+<h2 id="第-3-步认界面">第 3 步：认界面</h2>
+<p>打开软件，左侧从上到下：</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>菜</th><th>单</th><th></th><th>|</th><th></th><th>干</th><th>什</th><th>么</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>订</td><td>阅</td><td></td><td>|</td><td></td><td>管</td><td>理</td><td>你</td><td>的</td><td>订</td><td>阅</td><td>链</td><td>接</td><td>（</td><td>下</td><td>一</td><td>章</td><td>的</td><td>主</td><td>战</td><td>场</td><td>）</td><td></td><td></td></tr><tr><td></td><td></td><td>代</td><td>理</td><td></td><td>|</td><td></td><td>看</td><td>节</td><td>点</td><td>列</td><td>表</td><td>、</td><td>切</td><td>换</td><td>节</td><td>点</td><td>、</td><td>测</td><td>延</td><td>迟</td><td></td><td></td></tr><tr><td></td><td></td><td>规</td><td>则</td><td></td><td>|</td><td></td><td>分</td><td>流</td><td>规</td><td>则</td><td>（</td><td>默</td><td>认</td><td>的</td><td>很</td><td>好</td><td>用</td><td>，</td><td>先</td><td>不</td><td>用</td><td>动</td><td>）</td><td></td><td></td></tr><tr><td></td><td></td><td>连</td><td>接</td><td></td><td>|</td><td></td><td>实</td><td>时</td><td>显</td><td>示</td><td>哪</td><td>个</td><td>网</td><td>站</td><td>走</td><td>了</td><td>哪</td><td>个</td><td>节</td><td>点</td><td></td><td></td></tr><tr><td></td><td></td><td>日</td><td>志</td><td></td><td>|</td><td></td><td>排</td><td>错</td><td>用</td><td>（</td><td>第</td><td></td><td>6</td><td></td><td>章</td><td>会</td><td>用</td><td>到</td><td>）</td><td></td><td></td></tr><tr><td></td><td></td><td>设</td><td>置</td><td></td><td>|</td><td></td><td>端</td><td>口</td><td>、</td><td>开</td><td>机</td><td>自</td><td>启</td><td>、</td><td>语</td><td>言</td><td>等</td><td></td><td></td></tr></tbody></table></div>
+<p>## 第 4 步：导入订阅并连上</p>
+<p>详细步骤在第 4 章，这里给最短路径：</p>
+<ol>
+<li>左侧&quot;订阅&quot; → 顶部输入框粘贴你的订阅链接 → 点&quot;导入&quot;。</li>
+<li>点击刚导入的订阅卡片，使其处于<strong>选中状态</strong>。</li>
+<li>左侧&quot;设置&quot; → 打开&quot;<strong>系统代理</strong>&quot;开关。</li>
+</ol>
+<p>## ✅ 第 5 步：验证成功</p>
+<ol>
+<li>左侧&quot;代理&quot;页面，点一下任意节点做<strong>延迟测试</strong>，数字（如 <code>300ms</code>）出现即说明节点活着。</li>
+<li>浏览器打开 <strong>https://www.github.com</strong> ——能打开就成功了。</li>
+<li>再打开 <strong>https://www.google.com</strong> 双重确认。</li>
+</ol>
+<p>💡 在&quot;连接&quot;页面你能亲眼看到 github.com 走了哪个节点——这就是第 1 章讲的分流链路在现实中的样子。</p>
+<p>## 💡 推荐的设置（可选，建议照做）</p>
+<p>在&quot;设置&quot;页面：</p>
+<ul>
+<li><strong>开机自启</strong>：打开</li>
+<li><strong>静默启动</strong>：打开（开机不弹窗）</li>
+<li><strong>自动更新订阅</strong>：打开（间隔 1440 分钟 = 每天一次）</li>
+</ul>
+<p>⚠️ <strong>TUN 模式</strong>（全局接管所有流量）新手先别开：默认的&quot;系统代理&quot;已够用，TUN 需要额外装服务且排错更复杂，等基本盘稳了再研究。</p>
+<p>## 常见坑</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>现</th><th>象</th><th></th><th>|</th><th></th><th>原</th><th>因</th><th>和</th><th>解</th><th>法</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>装</td><td>完</td><td>打</td><td>不</td><td>开</td><td>网</td><td>页</td><td>，</td><td>比</td><td>之</td><td>前</td><td>还</td><td>卡</td><td></td><td>|</td><td></td><td>只</td><td>开</td><td>了</td><td>系</td><td>统</td><td>代</td><td>理</td><td>但</td><td>*</td><td>*</td><td>没</td><td>选</td><td>中</td><td>订</td><td>阅</td><td>*</td><td>*</td><td>（</td><td>第</td><td></td><td>4</td><td></td><td>步</td><td>第</td><td></td><td>2</td><td></td><td>条</td><td>）</td><td></td><td></td></tr><tr><td></td><td></td><td>代</td><td>理</td><td>页</td><td>没</td><td>有</td><td>节</td><td>点</td><td></td><td>|</td><td></td><td>订</td><td>阅</td><td>没</td><td>导</td><td>入</td><td>成</td><td>功</td><td>，</td><td>回</td><td>第</td><td></td><td>4</td><td></td><td>章</td><td>检</td><td>查</td><td>链</td><td>接</td><td></td><td></td></tr><tr><td></td><td></td><td>节</td><td>点</td><td>延</td><td>迟</td><td>全</td><td>是</td><td></td><td>`</td><td>-</td><td>1</td><td>m</td><td>s</td><td>`</td><td></td><td>|</td><td></td><td>节</td><td>点</td><td>全</td><td>挂</td><td>或</td><td>订</td><td>阅</td><td>过</td><td>期</td><td>，</td><td>看</td><td>第</td><td></td><td>6</td><td></td><td>章</td><td></td><td></td></tr><tr><td></td><td></td><td>下</td><td>载</td><td>的</td><td></td><td>e</td><td>x</td><td>e</td><td></td><td>被</td><td>杀</td><td>软</td><td>报</td><td>毒</td><td></td><td>|</td><td></td><td>先</td><td>核</td><td>对</td><td>确</td><td>实</td><td>是</td><td>从</td><td>官</td><td>方</td><td></td><td>R</td><td>e</td><td>l</td><td>e</td><td>a</td><td>s</td><td>e</td><td>s</td><td></td><td>下</td><td>载</td><td>、</td><td>文</td><td>件</td><td>大</td><td>小</td><td>是</td><td>否</td><td>正</td><td>常</td><td>；</td><td>确</td><td>认</td><td>无</td><td>误</td><td>后</td><td>再</td><td>放</td><td>行</td><td>。</td><td>*</td><td>*</td><td>别</td><td>养</td><td>成</td><td>&quot;</td><td>报</td><td>毒</td><td>就</td><td>加</td><td>信</td><td>任</td><td>&quot;</td><td>的</td><td>习</td><td>惯</td><td>*</td><td>*</td><td>，</td><td>来</td><td>路</td><td>不</td><td>明</td><td>的</td><td>包</td><td>报</td><td>毒</td><td>就</td><td>直</td><td>接</td><td>删</td><td></td><td></td></tr></tbody></table></div>
+<hr>
+<p><a href="02-客户端怎么选（全平台）.html">← 上一章</a> ｜ <a href="04-订阅链接导入与更新.html">第 4 章：订阅导入与更新 →</a> ｜ <a href="../index.html">← 返回目录</a></p>
+
+<div class="pager"><a class="prev" href="../01-科学上网篇/02-客户端怎么选（全平台）.html">← 客户端怎么选（全平台）</a><a class="next" href="../01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新 →</a></div>
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>

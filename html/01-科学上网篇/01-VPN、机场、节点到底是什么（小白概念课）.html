@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VPN、机场、节点到底是什么（小白概念课） · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="../index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="../index.html">首页</a></li><li><a href="../00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="../10-官方网址速查表.html">官方网址速查表</a></li><li><a href="../11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li></ul><div class="grp">科学上网篇</div><ul><li><a class="active" href="../01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="../01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a href="../01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="../01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="../01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="../01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a href="../01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="../01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="../02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a href="../02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a href="../02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="../02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a href="../02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a href="../02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a href="../02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="../99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<h1 id="01-科学上网篇-第-1-章vpn机场节点到底是什么小白概念课">01 科学上网篇 · 第 1 章：VPN、机场、节点到底是什么（小白概念课）</h1>
+<p><a href="../index.html">← 返回目录</a> ｜ <a href="02-客户端怎么选（全平台）.html">第 2 章：客户端怎么选 →</a></p>
+<h2 id="这章解决什么问题">这章解决什么问题</h2>
+<p>你肯定听过这些词：VPN、梯子、机场、节点、订阅、SSR、Trojan……它们像黑话一样劝退了无数小白。这一章不教操作，只把<strong>它们之间的关系</strong>讲明白。搞懂了这章，后面装软件、买机场你才知道自己在干什么。</p>
+<h2 id="一个比喻讲清楚全部">一个比喻讲清楚全部</h2>
+<p>把互联网想象成一个巨大的城市，你的电脑是<strong>你家</strong>，目标网站（比如 GitHub）是<strong>商场</strong>：</p>
+<ul>
+<li>正常情况下，你出家门 → 沿大路 → 到商场，畅通无阻。</li>
+<li>但有些商场（GitHub、Google）的路口被<strong>门禁</strong>拦住了，你的车过不去。</li>
+<li><strong>科学上网</strong>就是：你先开车去一个<strong>城外的中转站</strong>（节点服务器），从中转站再到商场——门禁只查&quot;大路口&quot;，从中转站过来的车一路绿灯，商场也只看到你是从中转站来的。</li>
+</ul>
+<p>所以整条链路是：</p>
+<pre><code>你的电脑 → 客户端（负责分流）→ 节点（中转服务器）→ 目标网站</code></pre>
+<p>记住这条链路，下面每个词都能对号入座。</p>
+<h2 id="名词逐个拆">名词逐个拆</h2>
+<h3 id="vpn虚拟专用网络">VPN（虚拟专用网络）</h3>
+<p>严格意义上 VPN 是一种企业组网技术，但在日常语境里，大家把所有&quot;帮你绕路的软件&quot;都叫 VPN。你只需要知道：<strong>VPN = 你在客户端里连上某个节点，你的流量就从那里绕出去</strong>。</p>
+<h3 id="节点">节点</h3>
+<p>一台位于&quot;墙外&quot;的服务器，加上一组连接参数（地址、端口、协议、密码）。<strong>节点 = 一个可以绕路的中转站</strong>。一条订阅里通常有几十个节点，分布在香港、日本、新加坡、美国等地。离你越近、线路越好的节点，速度通常越快。</p>
+<h3 id="协议">协议</h3>
+<p>你和节点之间&quot;说话的方式&quot;。常见的几种（知道名字就行，不用背）：</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>协</th><th>议</th><th></th><th>|</th><th></th><th>一</th><th>句</th><th>话</th><th>特</th><th>点</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>S</td><td>h</td><td>a</td><td>d</td><td>o</td><td>w</td><td>s</td><td>o</td><td>c</td><td>k</td><td>s</td><td>（</td><td>S</td><td>S</td><td>）</td><td></td><td>|</td><td></td><td>老</td><td>牌</td><td>、</td><td>轻</td><td>量</td><td>，</td><td>现</td><td>在</td><td>较</td><td>少</td><td>单</td><td>独</td><td>用</td><td></td><td></td></tr><tr><td></td><td></td><td>V</td><td>M</td><td>e</td><td>s</td><td>s</td><td></td><td>/</td><td></td><td>V</td><td>L</td><td>E</td><td>S</td><td>S</td><td></td><td>|</td><td></td><td>V</td><td>2</td><td>R</td><td>a</td><td>y</td><td></td><td>家</td><td>族</td><td>协</td><td>议</td><td>，</td><td>配</td><td>置</td><td>灵</td><td>活</td><td></td><td></td></tr><tr><td></td><td></td><td>T</td><td>r</td><td>o</td><td>j</td><td>a</td><td>n</td><td></td><td>|</td><td></td><td>伪</td><td>装</td><td>成</td><td>正</td><td>常</td><td></td><td>H</td><td>T</td><td>T</td><td>P</td><td>S</td><td></td><td>流</td><td>量</td><td>，</td><td>抗</td><td>干</td><td>扰</td><td>强</td><td></td><td></td></tr><tr><td></td><td></td><td>H</td><td>y</td><td>s</td><td>t</td><td>e</td><td>r</td><td>i</td><td>a</td><td>2</td><td></td><td>|</td><td></td><td>新</td><td>一</td><td>代</td><td>，</td><td>弱</td><td>网</td><td>环</td><td>境</td><td>下</td><td>速</td><td>度</td><td>快</td><td>、</td><td>抗</td><td>丢</td><td>包</td><td></td><td></td></tr><tr><td></td><td></td><td>T</td><td>U</td><td>I</td><td>C</td><td></td><td>|</td><td></td><td>也</td><td>是</td><td>新</td><td>一</td><td>代</td><td></td><td>U</td><td>D</td><td>P</td><td></td><td>协</td><td>议</td><td>，</td><td>低</td><td>延</td><td>迟</td><td></td><td></td></tr></tbody></table></div>
+<p>💡 订阅里的节点用什么协议，客户端就得支持什么协议——主流客户端全都支持，你不用操心。</p>
+<p>### 订阅（Subscription）</p>
+<p><strong>一个网址</strong>。客户端定期访问这个网址，就能拿到最新的节点列表。所以：</p>
+<ul>
+<li>机场换了服务器、加了节点，你<strong>什么都不用改</strong>，客户端自动更新。</li>
+<li>⚠️ 订阅链接里带你的私人凭证（token），<strong>泄露 = 任何人都能白嫖你的套餐</strong>，别发群里、别发朋友圈。</li>
+</ul>
+<p>### 机场</p>
+<p>卖订阅服务的商家。名字来源于早期订阅链接都以&quot;机场&quot;命名（XX 机场）。一个机场通常提供：</p>
+<ul>
+<li>一条订阅链接（内含几十上百个节点）</li>
+<li>后台面板（看流量用量、续费、重置订阅）</li>
+<li>常见套餐：每月 10～30 元、100～300GB 流量，足够个人日常使用</li>
+</ul>
+<p>💰 机场怎么挑、怎么避坑，是第 5 章的专题。</p>
+<p>### 客户端</p>
+<p>装在你电脑/手机上的<strong>软件</strong>，比如 Clash Verge、v2rayN。它负责三件事：</p>
+<ol>
+<li>导入订阅，拉取节点列表</li>
+<li>按规则分流：国内网站直连（不绕路），国外网站走节点</li>
+<li>连接/断开、测延迟、切换节点</li>
+</ol>
+<p>### 流量分流（客户端最实用的功能）</p>
+<p>好的客户端会自动判断：访问 B 站 → 直连；访问 GitHub → 走节点。你不需要每次手动开关，<strong>挂着就行</strong>。</p>
+<p>## 关系图（一图流）</p>
+<pre><code>┌─────────┐    ┌──────────────────┐    ┌─────────┐    ┌──────────┐
+│ 你的电脑 │ →  │ 客户端            │ →  │ 节点     │ →  │ 目标网站  │
+│         │    │ （Clash Verge 等）│    │ （境外） │    │ (GitHub) │
+└─────────┘    └────────┬─────────┘    └─────────┘    └──────────┘
+                        │ 定时拉取
+                 ┌──────┴──────┐
+                 │ 订阅链接     │ ←── 机场提供（几十个节点打包）
+                 └─────────────┘</code></pre>
+<p>## 常见疑问快答</p>
+<p><strong>Q：免费节点能用吗？</strong> 能连上，但风险多（速度慢、不稳定、流量可能被记录），第 7 章专门讲。学习尝鲜可以，别当主力。</p>
+<p><strong>Q：我在学校/公司，装这个会被发现吗？</strong> 本章不回答使用合规问题，请自行了解当地法规并阅读第 7 章。</p>
+<p><strong>Q：为什么不用浏览器插件就行？</strong> 插件只管浏览器这一个窗口，其他软件（Git、Docker、Python 下载依赖）全都管不到。客户端是全系统层面的，一劳永逸。</p>
+<p>## ✅ 验证你学会了吗</p>
+<p>不看上文，回答三个问题：</p>
+<ol>
+<li>订阅链接是什么？泄露了会怎样？</li>
+<li>客户端和节点，哪个装在你电脑上？</li>
+<li>访问国内网站时，流量会走节点吗？</li>
+</ol>
+<p>（答案：一个带凭证的网址，泄露=被白嫖；客户端；不会，规则分流直连。）</p>
+<hr>
+<p><a href="02-客户端怎么选（全平台）.html">第 2 章：客户端怎么选 →</a> ｜ <a href="../index.html">← 返回目录</a></p>
+
+<div class="pager"><a class="prev" href="../00-前言-这个仓库怎么用.html">← 前言-这个仓库怎么用</a><a class="next" href="../01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台） →</a></div>
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>安全须知与使用边界 · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="../index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="../index.html">首页</a></li><li><a href="../00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="../10-官方网址速查表.html">官方网址速查表</a></li><li><a href="../11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li></ul><div class="grp">科学上网篇</div><ul><li><a href="../01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="../01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a href="../01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="../01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="../01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="../01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a class="active" href="../01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="../01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="../02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a href="../02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a href="../02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="../02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a href="../02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a href="../02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a href="../02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="../99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<h1 id="01-科学上网篇-第-7-章安全须知与使用边界">01 科学上网篇 · 第 7 章：安全须知与使用边界</h1>
+<p><a href="06-连不上很慢老断流-故障排查.html">← 上一章</a> ｜ <a href="../index.html">返回目录</a></p>
+<h2 id="这章解决什么问题">这章解决什么问题</h2>
+<p>工具装好了、能用了，这一章讲<strong>怎么用得安全</strong>：哪些东西不能泄露、免费节点的水有多深、花出去的钱怎么保护。几分钟读完，可能帮你省下大麻烦。</p>
+<h2 id="一你的秘密清单这些东西绝不外传">一、你的秘密清单：这些东西绝不外传</h2>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>秘</th><th>密</th><th></th><th>|</th><th></th><th>泄</th><th>露</th><th>后</th><th>果</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>订</td><td>阅</td><td>链</td><td>接</td><td>（</td><td>含</td><td></td><td>t</td><td>o</td><td>k</td><td>e</td><td>n</td><td>）</td><td></td><td>|</td><td></td><td>别</td><td>人</td><td>白</td><td>嫖</td><td>你</td><td>的</td><td>流</td><td>量</td><td>，</td><td>超</td><td>设</td><td>备</td><td>数</td><td>后</td><td>互</td><td>踢</td><td>、</td><td>被</td><td>封</td><td></td><td></td></tr><tr><td></td><td></td><td>机</td><td>场</td><td>账</td><td>号</td><td>密</td><td>码</td><td></td><td>|</td><td></td><td>被</td><td>转</td><td>卖</td><td>、</td><td>被</td><td>改</td><td>绑</td><td></td><td></td></tr><tr><td></td><td></td><td>客</td><td>户</td><td>端</td><td>配</td><td>置</td><td>文</td><td>件</td><td></td><td>|</td><td></td><td>等</td><td>于</td><td>把</td><td>所</td><td>有</td><td>节</td><td>点</td><td>和</td><td>凭</td><td>证</td><td>打</td><td>包</td><td>送</td><td>人</td><td></td><td></td></tr></tbody></table></div>
+<p>习惯建议：订阅存在密码管理器或私人备忘；发截图前<strong>检查画面里有没有链接</strong>。</p>
+<p>## 二、免费节点的水有多深</p>
+<p>免费节点（网上白嫖的、TG 频道发的）能用，但想清楚三件事：</p>
+<ol>
+<li><strong>稳定为零</strong>：今天能用明天就挂，需要&quot;能上网&quot;来完成正事的时刻最坑你。</li>
+<li><strong>流量可能被记录</strong>：你不知道搭节点的人是谁、记录了什么。网页内容本身（账号密码、聊天正文）是加密的，但<strong>你访问了哪些网站</strong>这份&quot;名单&quot;是能被看到的。</li>
+<li><strong>中间人风险</strong>：个别来路不明的节点会劫持未加密（HTTP）流量、插入广告甚至钓鱼页面。</li>
+</ol>
+<p>结论：<strong>学习尝鲜可以，涉及登录账号、支付的操作走口碑好的付费线路</strong>。</p>
+<p>## 三、客户端安全</p>
+<ul>
+<li>只从<strong>官方 GitHub Releases</strong> 下载（第 2 章表格里的链接），安装包校验大小是否正常。</li>
+<li>⚠️ 搜索引擎里排前几名的&quot;官网&quot;可能是仿冒站，从 GitHub 仓库页跳转的 Release 才可信。</li>
+<li>杀软对这类软件偶有误报，但<strong>别一看到报毒就加白名单</strong>：先确认下载来源是官方 Releases、文件大小正常，再决定是否放行；来路不明的包报毒就当真有毒，直接删。</li>
+</ul>
+<p>## 四、机场相关的钱和隐私</p>
+<ul>
+<li><strong>月付试错</strong>（第 5 章讲过）：损失上限就是一个月的钱。</li>
+<li><strong>跑路是常态</strong>：再大的机场也可能哪天失联，别囤大额年付。</li>
+<li><strong>隐私预期</strong>：机场理论上能看到你访问的目标域名（内容是 HTTPS 加密的，看不到正文）。选运营久、口碑好的，就是选&quot;更不可能乱看你的&quot;。</li>
+<li>收到&quot;专属低价&quot;&quot;内部渠道&quot;私信，默认是钓鱼。</li>
+</ul>
+<p>## 五、使用边界</p>
+<ul>
+<li>先了解你所在地区的法律法规，自行判断和承担使用方式。</li>
+<li>不用于任何违法用途：爬别人隐私、攻击、传播违禁内容，这些不是&quot;灰色&quot;，是纯黑。</li>
+<li>不转卖、不分发你的订阅：一条链接进了公开群，你的账号就是第一个被追溯的。</li>
+</ul>
+<p>## 六、一句话总结</p>
+<blockquote><p>秘密不给别人看，钱只小额试，软件只官方下，用途自己负责。</p></blockquote>
+<hr>
+<p><a href="06-连不上很慢老断流-故障排查.html">← 上一章</a> ｜ <a href="08-社区精选问答-真实提问与解法.html">第 8 章：社区精选问答 →</a> ｜ <a href="../index.html">← 返回目录</a></p>
+
+<div class="pager"><a class="prev" href="../01-科学上网篇/06-连不上很慢老断流-故障排查.html">← 连不上很慢老断流-故障排查</a><a class="next" href="../01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法 →</a></div>
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>

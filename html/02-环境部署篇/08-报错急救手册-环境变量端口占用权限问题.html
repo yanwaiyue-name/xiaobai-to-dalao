@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>报错急救手册-环境变量端口占用权限问题 · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="../index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="../index.html">首页</a></li><li><a href="../00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="../10-官方网址速查表.html">官方网址速查表</a></li><li><a href="../11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li></ul><div class="grp">科学上网篇</div><ul><li><a href="../01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="../01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a href="../01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="../01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="../01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="../01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a href="../01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="../01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="../02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a href="../02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a href="../02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="../02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a href="../02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a href="../02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a class="active" href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a href="../02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="../99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<h1 id="02-环境部署篇-第-8-章报错急救手册环境变量-端口占用-权限问题">02 环境部署篇 · 第 8 章：报错急救手册：环境变量 / 端口占用 / 权限问题</h1>
+<p><a href="07-MySQL数据库安装.html">← 上一章</a> ｜ <a href="../index.html">返回目录</a></p>
+<h2 id="这章解决什么问题">这章解决什么问题</h2>
+<p>环境部署的疑难杂症合集。装任何软件卡住了，先来这里对号入座——新手卡住的报错大多就是这十来种，同一个病根换了个说法。</p>
+<hr>
+<h2 id="一环境变量类不是内部或外部命令">一、环境变量类：&quot;不是内部或外部命令&quot;</h2>
+<p><strong>症状</strong>：</p>
+<pre><code>'python' 不是内部或外部命令，也不是可运行的程序或批处理文件。</code></pre>
+<p><code>node</code>、<code>git</code>、<code>javac</code>、<code>mysql</code> 同理。</p>
+<p><strong>病根</strong>：系统在 PATH 列出的目录里找不到这个程序。</p>
+<p><strong>急救顺序</strong>：</p>
+<ol>
+<li><strong>先重开终端</strong>——改完环境变量旧窗口不生效，这是最高频的坑。</li>
+<li>确认软件真的装了：去安装目录里亲眼看 <code>xxx.exe</code> 在不在。</li>
+<li>补 PATH：Win 搜&quot;编辑系统环境变量&quot; → 环境变量 → <code>Path</code> → 新建一行 → 填软件的 <code>bin</code> 目录（如 <code>C:\Program Files\MySQL\MySQL Server 8.0\bin</code>）。⚠️ <strong>改之前先把当前 Path 的值整段复制到记事本存一份</strong>，改坏了能原样贴回去。</li>
+<li><strong>再重开终端</strong>验证。</li>
+</ol>
+<p><strong>排查命令</strong>：</p>
+<pre><code class="language-powershell">where.exe python      # 系统找的是哪个 python，路径对不对
+echo $env:Path        # 看现在的 PATH 里有没有你的目录</code></pre>
+<p>⚠️ <strong>两个经典变种</strong>：</p>
+<ul>
+<li>输 <code>python</code> 弹出微软商店 → 设置 → 应用 → 高级应用设置 → <strong>应用执行别名</strong>，关掉 python 相关开关。</li>
+<li><code>where python</code> 找到了但版本不对 → PATH 里有两个同名程序，<strong>排在前面（上边）的优先</strong>，把对的挪上去。</li>
+</ul>
+<hr>
+<h2 id="二端口占用类address-already-in-use">二、端口占用类：&quot;Address already in use&quot;</h2>
+<p><strong>症状</strong>：<code>port 3306 is already allocated</code> / <code>Port 8080 was already in use</code> / 程序启动报 <code>bind:10048</code>。</p>
+<p><strong>病根</strong>：另一个程序占了这个端口（可能就是你上次没关的服务）。</p>
+<p><strong>急救三连</strong>：</p>
+<pre><code class="language-powershell"># 1. 查谁占了端口（以 3306 为例）
+netstat -ano | findstr :3306
+# 输出最后一列是 PID（进程号）
+
+# 2. 看这个 PID 是什么程序
+tasklist | findstr 12345     # 把 12345 换成你的 PID
+
+# 3. 是垃圾就杀，是自己要用的服务就 stop 服务
+taskkill /PID 12345 /F</code></pre>
+<p><strong>常见占用惯犯</strong>：3306（旧 MySQL）、8080（Tomcat/其他后端）、7897（你的代理客户端本身，别杀）、80（IIS/Skype 老版本）。</p>
+<p>💡 不确定能不能杀？<code>taskkill</code> 之前先 <code>tasklist</code> 确认，杀错系统进程会蓝屏级别难受。</p>
+<hr>
+<h2 id="三权限类拒绝访问-access-denied">三、权限类：&quot;拒绝访问 / Access denied&quot;</h2>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>症</th><th>状</th><th></th><th>|</th><th></th><th>解</th><th>法</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>`</td><td>n</td><td>v</td><td>m</td><td></td><td>u</td><td>s</td><td>e</td><td>`</td><td></td><td>无</td><td>反</td><td>应</td><td>/</td><td>报</td><td>错</td><td></td><td>|</td><td></td><td>n</td><td>v</td><td>m</td><td></td><td>需</td><td>要</td><td>*</td><td>*</td><td>管</td><td>理</td><td>员</td><td></td><td>P</td><td>o</td><td>w</td><td>e</td><td>r</td><td>S</td><td>h</td><td>e</td><td>l</td><td>l</td><td>*</td><td>*</td><td>（</td><td>W</td><td>i</td><td>n</td><td>+</td><td>X</td><td></td><td>→</td><td></td><td>终</td><td>端</td><td>(</td><td>管</td><td>理</td><td>员</td><td>)</td><td>）</td><td></td><td></td></tr><tr><td></td><td></td><td>往</td><td></td><td>`</td><td>C</td><td>:</td><td>\</td><td>P</td><td>r</td><td>o</td><td>g</td><td>r</td><td>a</td><td>m</td><td></td><td>F</td><td>i</td><td>l</td><td>e</td><td>s</td><td>`</td><td></td><td>写</td><td>文</td><td>件</td><td>失</td><td>败</td><td></td><td>|</td><td></td><td>该</td><td>目</td><td>录</td><td>受</td><td>保</td><td>护</td><td>：</td><td>右</td><td>键</td><td>&quot;</td><td>以</td><td>管</td><td>理</td><td>员</td><td>身</td><td>份</td><td>运</td><td>行</td><td>&quot;</td><td>，</td><td>或</td><td>干</td><td>脆</td><td>把</td><td>工</td><td>作</td><td>目</td><td>录</td><td>放</td><td>到</td><td></td><td>`</td><td>C</td><td>:</td><td>\</td><td>c</td><td>o</td><td>d</td><td>e</td><td>\</td><td>`</td><td></td><td>这</td><td>种</td><td>非</td><td>系</td><td>统</td><td>区</td><td></td><td></td></tr><tr><td></td><td></td><td>`</td><td>S</td><td>e</td><td>t</td><td>-</td><td>E</td><td>x</td><td>e</td><td>c</td><td>u</td><td>t</td><td>i</td><td>o</td><td>n</td><td>P</td><td>o</td><td>l</td><td>i</td><td>c</td><td>y</td><td>`</td><td></td><td>报</td><td>错</td><td></td><td>|</td><td></td><td>同</td><td>样</td><td>需</td><td>要</td><td>管</td><td>理</td><td>员</td><td>窗</td><td>口</td><td></td><td></td></tr><tr><td></td><td></td><td>G</td><td>i</td><td>t</td><td></td><td>p</td><td>u</td><td>s</td><td>h</td><td></td><td>报</td><td></td><td>`</td><td>4</td><td>0</td><td>3</td><td>`</td><td></td><td>|</td><td></td><td>仓</td><td>库</td><td>没</td><td>权</td><td>限</td><td>：</td><td>检</td><td>查</td><td>远</td><td>程</td><td>地</td><td>址</td><td>用</td><td>户</td><td>名</td><td>、</td><td>t</td><td>o</td><td>k</td><td>e</td><td>n</td><td></td><td>权</td><td>限</td><td>是</td><td>否</td><td>含</td><td></td><td>r</td><td>e</td><td>p</td><td>o</td><td></td><td></td></tr><tr><td></td><td></td><td>删</td><td>文</td><td>件</td><td>说</td><td>被</td><td>占</td><td>用</td><td></td><td>|</td><td></td><td>开</td><td>资</td><td>源</td><td>监</td><td>视</td><td>器</td><td>（</td><td>W</td><td>i</td><td>n</td><td></td><td>键</td><td>搜</td><td></td><td>r</td><td>e</td><td>s</td><td>m</td><td>o</td><td>n</td><td>）</td><td>→</td><td></td><td>C</td><td>P</td><td>U</td><td></td><td>标</td><td>签</td><td></td><td>→</td><td></td><td>在</td><td>&quot;</td><td>关</td><td>联</td><td>的</td><td>句</td><td>柄</td><td>&quot;</td><td>搜</td><td>索</td><td>框</td><td>输</td><td>入</td><td>文</td><td>件</td><td>名</td><td>，</td><td>就</td><td>能</td><td>揪</td><td>出</td><td>是</td><td>哪</td><td>个</td><td>程</td><td>序</td><td>占</td><td>着</td><td>它</td><td></td><td></td></tr></tbody></table></div>
+<hr>
+<p>## 四、网络类：&quot;下载慢 / 超时 / 证书错误&quot;</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>症</th><th>状</th><th></th><th>|</th><th></th><th>解</th><th>法</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>p</td><td>i</td><td>p</td><td></td><td>/</td><td></td><td>n</td><td>p</td><td>m</td><td></td><td>/</td><td></td><td>g</td><td>i</td><td>t</td><td></td><td>下</td><td>载</td><td>龟</td><td>速</td><td></td><td>|</td><td></td><td>换</td><td>国</td><td>内</td><td>源</td><td>：</td><td>本</td><td>篇</td><td>第</td><td></td><td>2</td><td>、</td><td>3</td><td></td><td>章</td><td>都</td><td>有</td><td>现</td><td>成</td><td>命</td><td>令</td><td></td><td></td></tr><tr><td></td><td></td><td>G</td><td>i</td><td>t</td><td>H</td><td>u</td><td>b</td><td></td><td>c</td><td>l</td><td>o</td><td>n</td><td>e</td><td></td><td>超</td><td>时</td><td></td><td>|</td><td></td><td>第</td><td></td><td>1</td><td></td><td>章</td><td>的</td><td></td><td>G</td><td>i</td><td>t</td><td></td><td>代</td><td>理</td><td>三</td><td>行</td><td>命</td><td>令</td><td></td><td></td></tr><tr><td></td><td></td><td>d</td><td>o</td><td>c</td><td>k</td><td>e</td><td>r</td><td></td><td>p</td><td>u</td><td>l</td><td>l</td><td></td><td>超</td><td>时</td><td></td><td>|</td><td></td><td>第</td><td></td><td>6</td><td></td><td>章</td><td>镜</td><td>像</td><td>加</td><td>速</td><td></td><td></td></tr><tr><td></td><td></td><td>报</td><td></td><td>`</td><td>S</td><td>S</td><td>L</td><td></td><td>c</td><td>e</td><td>r</td><td>t</td><td>i</td><td>f</td><td>i</td><td>c</td><td>a</td><td>t</td><td>e</td><td></td><td>p</td><td>r</td><td>o</td><td>b</td><td>l</td><td>e</td><td>m</td><td>`</td><td></td><td>|</td><td></td><td>先</td><td>确</td><td>认</td><td>系</td><td>统</td><td>时</td><td>间</td><td>对</td><td>不</td><td>对</td><td>（</td><td>错</td><td>一</td><td>年</td><td>必</td><td>然</td><td>证</td><td>书</td><td>错</td><td>）</td><td>；</td><td>`</td><td>w</td><td>3</td><td>2</td><td>t</td><td>m</td><td></td><td>/</td><td>r</td><td>e</td><td>s</td><td>y</td><td>n</td><td>c</td><td>`</td><td></td><td></td></tr><tr><td></td><td></td><td>装</td><td>一</td><td>半</td><td>断</td><td>网</td><td>失</td><td>败</td><td></td><td>|</td><td></td><td>重</td><td>跑</td><td>安</td><td>装</td><td>器</td><td>前</td><td>先</td><td>删</td><td>半</td><td>成</td><td>品</td><td>目</td><td>录</td><td>，</td><td>避</td><td>免</td><td>残</td><td>留</td><td>冲</td><td>突</td><td></td><td></td></tr></tbody></table></div>
+<hr>
+<p>## 五、玄学类：&quot;之前好好的，突然就不行了&quot;</p>
+<p>按命中率排序：</p>
+<ol>
+<li><strong>重开终端</strong>（改了配置没生效）</li>
+<li><strong>重启软件</strong></li>
+<li><strong>重启电脑</strong>（Docker/WSL 类问题的特效药）</li>
+<li>想想刚才装了/卸了什么 → 回滚那个操作</li>
+<li>还不行 → 把<strong>完整报错原文</strong>复制下来，去本仓库提 Issue</li>
+</ol>
+<hr>
+<p>## 六、防患于未然：四条军规</p>
+<ol>
+<li><strong>安装路径永远全英文</strong>，别带空格和中文（<code>C:\code\</code> 而不是 <code>C:\新建文件夹\我的 程序\</code>）。</li>
+<li><strong>一个软件只装一份</strong>，装新版本先卸旧版本（Node/Java 重灾区）。</li>
+<li><strong>改环境变量后必重开终端</strong>。</li>
+<li><strong>报错先看第一行</strong>，把原文复制下来搜索/提问，别截图抠字。</li>
+</ol>
+<p>## ✅ 验证：你有急救能力了</p>
+<p>不看上文回答：</p>
+<ul>
+<li><code>node</code> 不是内部命令，急救第一步是什么？（重开终端）</li>
+<li>8080 被占，三连命令是什么？（<code>netstat -ano | findstr :8080</code> → <code>tasklist | findstr PID</code> → <code>taskkill /PID x /F</code>）</li>
+</ul>
+<p>环境部署篇到此全部完成，回头看看目录，你已经把小白阶段最难的坑全填平了。</p>
+<hr>
+<p><a href="07-MySQL数据库安装.html">← 上一章</a> ｜ <a href="09-社区精选问答-Git与GitHub-WSL-Docker.html">第 9 章：社区精选问答 →</a> ｜ <a href="../index.html">← 返回目录</a></p>
+
+<div class="pager"><a class="prev" href="../02-环境部署篇/07-MySQL数据库安装.html">← MySQL数据库安装</a><a class="next" href="../02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker →</a></div>
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>

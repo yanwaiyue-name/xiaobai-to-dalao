@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NodeJS环境部署（nvm管理） · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="../index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="../index.html">首页</a></li><li><a href="../00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="../10-官方网址速查表.html">官方网址速查表</a></li><li><a href="../11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li></ul><div class="grp">科学上网篇</div><ul><li><a href="../01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="../01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a href="../01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="../01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="../01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="../01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a href="../01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="../01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="../02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a href="../02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a class="active" href="../02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a href="../02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="../02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a href="../02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a href="../02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a href="../02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a href="../02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="../99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<h1 id="02-环境部署篇-第-3-章nodejs-环境部署nvm-管理">02 环境部署篇 · 第 3 章：Node.js 环境部署（nvm 管理）</h1>
+<p><a href="02-Python环境部署（多版本共存）.html">← 上一章</a> ｜ <a href="../index.html">返回目录</a> ｜ <a href="04-Java环境部署（JDK选择与环境变量）.html">第 4 章：Java 环境部署 →</a></p>
+<h2 id="这章解决什么问题">这章解决什么问题</h2>
+<ul>
+<li>用 <strong>nvm</strong> 装 Node.js：以后新版本随便升、旧项目随时切，不用卸了装装了卸</li>
+<li>npm 换国内源，装依赖不再龟速</li>
+</ul>
+<h2 id="为什么用-nvm-而不是官网安装包">为什么用 nvm 而不是官网安装包</h2>
+<p>Node.js 的版本特别多：新项目要 20.x，老项目只跑得动 16.x。官网安装包一次只能装一个版本，换版本就得卸了装、装了卸。nvm（Node Version Manager，版本管理器）让你<strong>多个版本共存、一条命令随时切换</strong>。</p>
+<h2 id="第-1-步卸载已有的-node如果装过">第 1 步：卸载已有的 Node（如果装过）</h2>
+<p>控制面板 → 卸载 <code>Node.js</code>。⚠️ nvm 的工作方式是&quot;包办&quot;你电脑上所有的 Node，如果还残留着一个官网装的 Node，两套会打架导致切换失效，所以必须先卸干净。</p>
+<h2 id="第-2-步安装-nvm-windows">第 2 步：安装 nvm-windows</h2>
+<ol>
+<li>下载：<strong>https://github.com/coreybutler/nvm-windows/releases</strong> → <code>nvm-setup.exe</code>。</li>
+<li>双击安装，路径保持默认（或全英文路径），完成。</li>
+</ol>
+<h2 id="验证">✅ 验证</h2>
+<p><strong>以管理员身份</strong>打开 PowerShell：</p>
+<pre><code class="language-powershell">nvm version</code></pre>
+<p>输出版本号即成功。</p>
+<p>⚠️ nvm-windows 的很多操作需要管理员权限，<strong>以后凡是用 nvm，都用管理员 PowerShell</strong>。</p>
+<h2 id="第-3-步先给-nvm-换国内源重要">第 3 步：先给 nvm 换国内源（重要）</h2>
+<pre><code class="language-powershell">nvm node_mirror https://npmmirror.com/mirrors/node/
+nvm npm_mirror https://npmmirror.com/mirrors/npm/</code></pre>
+<p>不换的话，下一步下载 Node 大概率龟速或失败。</p>
+<h2 id="第-4-步安装-nodejs-lts-版本">第 4 步：安装 Node.js LTS 版本</h2>
+<pre><code class="language-powershell">nvm list available        # 看看有哪些版本（找 LTS 标记的）
+nvm install lts           # 直接装当前最新 LTS，不用背版本号
+nvm list                  # 看刚装好的具体版本号
+nvm use 22.14.0           # 启用它：把 22.14.0 换成你 nvm list 里实际的版本号</code></pre>
+<h2 id="验证-2">✅ 验证</h2>
+<pre><code class="language-powershell">node --version    # 显示 v22.x / v24.x 等 LTS 版本号即可
+npm --version     # 有版本号即可，不必和教程一致</code></pre>
+<p>⚠️ 别照抄老教程装 Node 20：它已在 2026 年 4 月停止维护。新装就用上面的 <code>nvm install lts</code>。</p>
+<p>💡 以后想升级：再跑一次 <code>nvm install lts</code>，然后 <code>nvm use 新版本号</code>，旧版本还在，随时切回。</p>
+<h2 id="第-5-步npm-换国内源">第 5 步：npm 换国内源</h2>
+<pre><code class="language-powershell">npm config set registry https://registry.npmmirror.com</code></pre>
+<p>验证：</p>
+<pre><code class="language-powershell">npm config get registry    # 应输出 npmmirror 地址</code></pre>
+<h2 id="第-6-步跑第一个程序">第 6 步：跑第一个程序</h2>
+<pre><code class="language-powershell">mkdir C:\code\node-demo
+cd C:\code\node-demo
+npm init -y                # 生成 package.json
+npm install axios          # 装第一个依赖
+node -e &quot;console.log('Node 跑起来了')&quot;</code></pre>
+<h2 id="常见坑">常见坑</h2>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>现</th><th>象</th><th></th><th>|</th><th></th><th>解</th><th>法</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>`</td><td>n</td><td>v</td><td>m</td><td></td><td>u</td><td>s</td><td>e</td><td>`</td><td></td><td>后</td><td></td><td>`</td><td>n</td><td>o</td><td>d</td><td>e</td><td>`</td><td></td><td>仍</td><td>不</td><td>是</td><td>内</td><td>部</td><td>命</td><td>令</td><td></td><td>|</td><td></td><td>没</td><td>用</td><td>管</td><td>理</td><td>员</td><td>权</td><td>限</td><td>，</td><td>或</td><td>第</td><td>一</td><td>步</td><td>的</td><td>旧</td><td></td><td>N</td><td>o</td><td>d</td><td>e</td><td></td><td>没</td><td>卸</td><td>干</td><td>净</td><td></td><td></td></tr><tr><td></td><td></td><td>`</td><td>n</td><td>v</td><td>m</td><td></td><td>i</td><td>n</td><td>s</td><td>t</td><td>a</td><td>l</td><td>l</td><td>`</td><td></td><td>下</td><td>载</td><td>失</td><td>败</td><td>/</td><td>超</td><td>时</td><td></td><td>|</td><td></td><td>第</td><td></td><td>3</td><td></td><td>步</td><td>的</td><td>镜</td><td>像</td><td>没</td><td>配</td><td>，</td><td>回</td><td>去</td><td>配</td><td>置</td><td></td><td></td></tr><tr><td></td><td></td><td>`</td><td>n</td><td>p</td><td>m</td><td></td><td>i</td><td>n</td><td>s</td><td>t</td><td>a</td><td>l</td><td>l</td><td>`</td><td></td><td>卡</td><td>住</td><td></td><td>|</td><td></td><td>换</td><td>源</td><td>（</td><td>第</td><td></td><td>5</td><td></td><td>步</td><td>）</td><td>；</td><td>还</td><td>不</td><td>行</td><td>删</td><td>掉</td><td>项</td><td>目</td><td>里</td><td>的</td><td></td><td>`</td><td>n</td><td>o</td><td>d</td><td>e</td><td>_</td><td>m</td><td>o</td><td>d</td><td>u</td><td>l</td><td>e</td><td>s</td><td>`</td><td></td><td>和</td><td></td><td>`</td><td>p</td><td>a</td><td>c</td><td>k</td><td>a</td><td>g</td><td>e</td><td>-</td><td>l</td><td>o</td><td>c</td><td>k</td><td>.</td><td>j</td><td>s</td><td>o</td><td>n</td><td>`</td><td></td><td>重</td><td>装</td><td></td><td></td></tr><tr><td></td><td></td><td>项</td><td>目</td><td>报</td><td></td><td>`</td><td>n</td><td>o</td><td>d</td><td>e</td><td>-</td><td>s</td><td>a</td><td>s</td><td>s</td><td>`</td><td></td><td>安</td><td>装</td><td>失</td><td>败</td><td></td><td>|</td><td></td><td>老</td><td>项</td><td>目</td><td>依</td><td>赖</td><td>，</td><td>`</td><td>n</td><td>p</td><td>m</td><td></td><td>c</td><td>o</td><td>n</td><td>f</td><td>i</td><td>g</td><td></td><td>s</td><td>e</td><td>t</td><td></td><td>s</td><td>a</td><td>s</td><td>s</td><td>_</td><td>b</td><td>i</td><td>n</td><td>a</td><td>r</td><td>y</td><td>_</td><td>s</td><td>i</td><td>t</td><td>e</td><td></td><td>h</td><td>t</td><td>t</td><td>p</td><td>s</td><td>:</td><td>/</td><td>/</td><td>n</td><td>p</td><td>m</td><td>m</td><td>i</td><td>r</td><td>r</td><td>o</td><td>r</td><td>.</td><td>c</td><td>o</td><td>m</td><td>/</td><td>m</td><td>i</td><td>r</td><td>r</td><td>o</td><td>r</td><td>s</td><td>/</td><td>n</td><td>o</td><td>d</td><td>e</td><td>-</td><td>s</td><td>a</td><td>s</td><td>s</td><td>/</td><td>`</td><td></td><td>再</td><td>装</td><td></td><td></td></tr><tr><td></td><td></td><td>全</td><td>局</td><td>装</td><td>的</td><td>包</td><td>找</td><td>不</td><td>到</td><td></td><td>|</td><td></td><td>`</td><td>n</td><td>p</td><td>m</td><td></td><td>c</td><td>o</td><td>n</td><td>f</td><td>i</td><td>g</td><td></td><td>g</td><td>e</td><td>t</td><td></td><td>p</td><td>r</td><td>e</td><td>f</td><td>i</td><td>x</td><td>`</td><td></td><td>看</td><td>路</td><td>径</td><td>，</td><td>确</td><td>认</td><td>该</td><td>路</td><td>径</td><td>在</td><td></td><td>P</td><td>A</td><td>T</td><td>H</td><td></td><td>里</td><td>（</td><td>n</td><td>v</td><td>m</td><td></td><td>路</td><td>径</td><td>会</td><td>自</td><td>动</td><td>接</td><td>管</td><td>）</td><td></td><td></td></tr></tbody></table></div>
+<p>## ✅ 验证全部完成</p>
+<pre><code class="language-powershell">nvm list          # 能看到你装的版本且带 * 号（当前使用）
+node --version    # 有版本号
+npm --version     # 有版本号
+npm config get registry   # npmmirror 地址</code></pre>
+<hr>
+<p><a href="02-Python环境部署（多版本共存）.html">← 上一章</a> ｜ <a href="04-Java环境部署（JDK选择与环境变量）.html">第 4 章：Java 环境部署 →</a> ｜ <a href="../index.html">← 返回目录</a></p>
+
+<div class="pager"><a class="prev" href="../02-环境部署篇/02-Python环境部署（多版本共存）.html">← Python环境部署（多版本共存）</a><a class="next" href="../02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量） →</a></div>
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>
