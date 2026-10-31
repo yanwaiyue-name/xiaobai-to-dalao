@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yanwaiyue-name.github.io/xiaobai-to-dalao/sitemap.xml
