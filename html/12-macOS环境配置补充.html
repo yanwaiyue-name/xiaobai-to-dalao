@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>macOS环境配置补充 · 小白成为计算机大佬</title>
+<meta name="description" content="写给纯小白的计算机入门教程：科学上网 + Windows 软件环境部署">
+<style>    :root{--bg:#0d1117;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .layout{display:flex;max-width:1180px;margin:0 auto;gap:28px;padding:0 16px}
+    nav.side{position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;width:255px;flex:none;padding:22px 0;border-right:1px solid var(--border)}
+    nav.side .brand{font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;display:block}
+    nav.side ul{list-style:none;margin:0;padding:0}
+    nav.side a{display:block;padding:5px 10px;border-radius:6px;color:var(--muted);font-size:13.5px}
+    nav.side a:hover{background:#21262d;color:var(--text);text-decoration:none}
+    nav.side a.active{background:rgba(31,111,235,.15);color:var(--accent);font-weight:600}
+    nav.side .grp{margin-top:14px;font-size:11px;letter-spacing:.08em;color:#6e7681;padding-left:10px}
+    main{flex:1;min-width:0;padding:26px 0 80px}
+    h1{font-size:26px;border-bottom:1px solid var(--border);padding-bottom:12px;margin-top:0}
+    h2{font-size:20px;margin-top:32px;padding-left:10px;border-left:4px solid var(--accent)}
+    h3{font-size:17px;margin-top:24px}
+    code{background:#21262d;padding:2px 6px;border-radius:5px;font-size:13px;font-family:Consolas,"Courier New",monospace}
+    pre{background:#161b22;border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto}
+    pre code{background:none;padding:0;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+    th{background:#1c2128;color:var(--muted);font-weight:600;white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--border);background:#161b22;color:var(--muted);border-radius:0 8px 8px 0}
+    blockquote p{margin:0}
+    hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+    ul,ol{padding-left:24px}li{margin:6px 0}
+    .pager{display:flex;justify-content:space-between;gap:12px;margin-top:44px;padding-top:20px;border-top:1px solid var(--border);font-size:14px}
+    .pager a{max-width:46%}
+    .pager .next{margin-left:auto;text-align:right}
+    footer{margin-top:40px;color:#6e7681;font-size:12.5px}
+    @media(max-width:820px){.layout{flex-direction:column}nav.side{position:static;height:auto;width:auto;border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side"><a class="brand" href="index.html">📖 小白成为计算机大佬</a><div class="grp">开始</div><ul><li><a href="index.html">首页</a></li><li><a href="00-前言-这个仓库怎么用.html">前言-这个仓库怎么用</a></li><li><a href="10-官方网址速查表.html">官方网址速查表</a></li><li><a href="11-资料库-进阶预备资源.html">资料库-进阶预备资源</a></li><li><a class="active" href="12-macOS环境配置补充.html">macOS环境配置补充</a></li></ul><div class="grp">科学上网篇</div><ul><li><a href="01-科学上网篇/01-VPN、机场、节点到底是什么（小白概念课）.html">VPN、机场、节点到底是什么（小白概念课）</a></li><li><a href="01-科学上网篇/02-客户端怎么选（全平台）.html">客户端怎么选（全平台）</a></li><li><a href="01-科学上网篇/03-Windows从零开始-ClashVerge安装教程.html">Windows从零开始-ClashVerge安装教程</a></li><li><a href="01-科学上网篇/04-订阅链接导入与更新.html">订阅链接导入与更新</a></li><li><a href="01-科学上网篇/05-机场怎么选-价格线路与避坑.html">机场怎么选-价格线路与避坑</a></li><li><a href="01-科学上网篇/06-连不上很慢老断流-故障排查.html">连不上很慢老断流-故障排查</a></li><li><a href="01-科学上网篇/07-安全须知与使用边界.html">安全须知与使用边界</a></li><li><a href="01-科学上网篇/08-社区精选问答-真实提问与解法.html">社区精选问答-真实提问与解法</a></li></ul><div class="grp">环境部署篇</div><ul><li><a href="02-环境部署篇/01-Git安装配置与GitHub连接（含代理加速）.html">Git安装配置与GitHub连接（含代理加速）</a></li><li><a href="02-环境部署篇/02-Python环境部署（多版本共存）.html">Python环境部署（多版本共存）</a></li><li><a href="02-环境部署篇/03-NodeJS环境部署（nvm管理）.html">NodeJS环境部署（nvm管理）</a></li><li><a href="02-环境部署篇/04-Java环境部署（JDK选择与环境变量）.html">Java环境部署（JDK选择与环境变量）</a></li><li><a href="02-环境部署篇/05-VSCode安装与必备插件.html">VSCode安装与必备插件</a></li><li><a href="02-环境部署篇/06-DockerDesktop安装与国内镜像.html">DockerDesktop安装与国内镜像</a></li><li><a href="02-环境部署篇/07-MySQL数据库安装.html">MySQL数据库安装</a></li><li><a href="02-环境部署篇/08-报错急救手册-环境变量端口占用权限问题.html">报错急救手册-环境变量端口占用权限问题</a></li><li><a href="02-环境部署篇/09-社区精选问答-Git与GitHub-WSL-Docker.html">社区精选问答-Git与GitHub-WSL-Docker</a></li></ul><div class="grp">进阶篇</div><ul><li><a href="99-进阶篇（建设中）/index.html">README</a></li></ul></nav>
+<main>
+<h1 id="macos-环境配置补充">macOS 环境配置补充</h1>
+<p><a href="index.html">← 返回目录</a></p>
+<p>主教程以 Windows 为第一视角。这一页只列 macOS 上<strong>真正不一样</strong>的地方，避免照着 Windows 命令硬套。</p>
+<h2 id="1-包管理器用-homebrew">1. 包管理器：用 Homebrew</h2>
+<p>macOS 没有官方的 <code>winget</code> 类工具，社区标准是 <a href="https://brew.sh/">Homebrew</a>。</p>
+<pre><code class="language-bash"># 安装 Homebrew
+/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+
+# 验证
+brew --version</code></pre>
+<p>常用命令对照：</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>操</th><th>作</th><th></th><th>|</th><th></th><th>W</th><th>i</th><th>n</th><th>d</th><th>o</th><th>w</th><th>s</th><th>（</th><th>S</th><th>c</th><th>o</th><th>o</th><th>p</th><th></th><th>为</th><th>例</th><th>）</th><th></th><th>|</th><th></th><th>m</th><th>a</th><th>c</th><th>O</th><th>S</th><th>（</th><th>H</th><th>o</th><th>m</th><th>e</th><th>b</th><th>r</th><th>e</th><th>w</th><th>）</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>安</td><td>装</td><td></td><td>|</td><td></td><td>`</td><td>s</td><td>c</td><td>o</td><td>o</td><td>p</td><td></td><td>i</td><td>n</td><td>s</td><td>t</td><td>a</td><td>l</td><td>l</td><td></td><td>g</td><td>i</td><td>t</td><td>`</td><td></td><td>|</td><td></td><td>`</td><td>b</td><td>r</td><td>e</td><td>w</td><td></td><td>i</td><td>n</td><td>s</td><td>t</td><td>a</td><td>l</td><td>l</td><td></td><td>g</td><td>i</td><td>t</td><td>`</td><td></td><td></td></tr><tr><td></td><td></td><td>更</td><td>新</td><td></td><td>|</td><td></td><td>`</td><td>s</td><td>c</td><td>o</td><td>o</td><td>p</td><td></td><td>u</td><td>p</td><td>d</td><td>a</td><td>t</td><td>e</td><td></td><td>g</td><td>i</td><td>t</td><td>`</td><td></td><td>|</td><td></td><td>`</td><td>b</td><td>r</td><td>e</td><td>w</td><td></td><td>u</td><td>p</td><td>g</td><td>r</td><td>a</td><td>d</td><td>e</td><td></td><td>g</td><td>i</td><td>t</td><td>`</td><td></td><td></td></tr><tr><td></td><td></td><td>卸</td><td>载</td><td></td><td>|</td><td></td><td>`</td><td>s</td><td>c</td><td>o</td><td>o</td><td>p</td><td></td><td>u</td><td>n</td><td>i</td><td>n</td><td>s</td><td>t</td><td>a</td><td>l</td><td>l</td><td></td><td>g</td><td>i</td><td>t</td><td>`</td><td></td><td>|</td><td></td><td>`</td><td>b</td><td>r</td><td>e</td><td>w</td><td></td><td>u</td><td>n</td><td>i</td><td>n</td><td>s</td><td>t</td><td>a</td><td>l</td><td>l</td><td></td><td>g</td><td>i</td><td>t</td><td>`</td><td></td><td></td></tr><tr><td></td><td></td><td>搜</td><td>索</td><td></td><td>|</td><td></td><td>`</td><td>s</td><td>c</td><td>o</td><td>o</td><td>p</td><td></td><td>s</td><td>e</td><td>a</td><td>r</td><td>c</td><td>h</td><td></td><td>v</td><td>i</td><td>m</td><td>`</td><td></td><td>|</td><td></td><td>`</td><td>b</td><td>r</td><td>e</td><td>w</td><td></td><td>s</td><td>e</td><td>a</td><td>r</td><td>c</td><td>h</td><td></td><td>v</td><td>i</td><td>m</td><td>`</td><td></td><td></td></tr></tbody></table></div>
+<p>## 2. 环境变量：<code>$env:</code> 换成 <code>$</code></p>
+<p>PowerShell 与 zsh 的写法不同，这是最容易照搬出错的地方：</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>目</th><th>的</th><th></th><th>|</th><th></th><th>W</th><th>i</th><th>n</th><th>d</th><th>o</th><th>w</th><th>s</th><th></th><th>P</th><th>o</th><th>w</th><th>e</th><th>r</th><th>S</th><th>h</th><th>e</th><th>l</th><th>l</th><th></th><th>|</th><th></th><th>m</th><th>a</th><th>c</th><th>O</th><th>S</th><th></th><th>z</th><th>s</th><th>h</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>读</td><td>变</td><td>量</td><td></td><td>|</td><td></td><td>`</td><td>$</td><td>e</td><td>n</td><td>v</td><td>:</td><td>P</td><td>A</td><td>T</td><td>H</td><td>`</td><td></td><td>|</td><td></td><td>`</td><td>$</td><td>P</td><td>A</td><td>T</td><td>H</td><td>`</td><td></td><td></td></tr><tr><td></td><td></td><td>临</td><td>时</td><td>设</td><td>变</td><td>量</td><td></td><td>|</td><td></td><td>`</td><td>$</td><td>e</td><td>n</td><td>v</td><td>:</td><td>F</td><td>O</td><td>O</td><td></td><td>=</td><td></td><td>&quot;</td><td>b</td><td>a</td><td>r</td><td>&quot;</td><td>`</td><td></td><td>|</td><td></td><td>`</td><td>e</td><td>x</td><td>p</td><td>o</td><td>r</td><td>t</td><td></td><td>F</td><td>O</td><td>O</td><td>=</td><td>b</td><td>a</td><td>r</td><td>`</td><td></td><td></td></tr><tr><td></td><td></td><td>永</td><td>久</td><td>配</td><td>置</td><td></td><td>|</td><td></td><td>系</td><td>统</td><td>属</td><td>性</td><td></td><td>→</td><td></td><td>环</td><td>境</td><td>变</td><td>量</td><td></td><td>|</td><td></td><td>写</td><td>进</td><td></td><td>`</td><td>~</td><td>/</td><td>.</td><td>z</td><td>s</td><td>h</td><td>r</td><td>c</td><td>`</td><td></td><td></td></tr><tr><td></td><td></td><td>生</td><td>效</td><td></td><td>|</td><td></td><td>重</td><td>开</td><td>终</td><td>端</td><td></td><td>|</td><td></td><td>`</td><td>s</td><td>o</td><td>u</td><td>r</td><td>c</td><td>e</td><td></td><td>~</td><td>/</td><td>.</td><td>z</td><td>s</td><td>h</td><td>r</td><td>c</td><td>`</td><td></td><td></td></tr></tbody></table></div>
+<p>编辑配置：</p>
+<pre><code class="language-bash">nano ~/.zshrc
+# 加入一行，例如：
+export PATH=&quot;$HOME/.local/bin:$PATH&quot;
+# 保存后
+source ~/.zshrc</code></pre>
+<p>## 3. Python：Homebrew 或 pyenv</p>
+<pre><code class="language-bash"># 直接装最新稳定版
+brew install python
+
+# 需要多版本共存时用 pyenv
+brew install pyenv
+echo 'export PYENV_ROOT=&quot;$HOME/.pyenv&quot;' &gt;&gt; ~/.zshrc
+echo 'export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;' &gt;&gt; ~/.zshrc
+echo 'eval &quot;$(pyenv init -)&quot;' &gt;&gt; ~/.zshrc
+source ~/.zshrc
+
+pyenv install 3.12
+pyenv global 3.12</code></pre>
+<p>注意：macOS 自带的 <code>/usr/bin/python3</code> 是系统组件，不要删、不要覆盖。</p>
+<p>## 4. Node.js：nvm 或 Homebrew</p>
+<pre><code class="language-bash"># nvm 方式
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+# 重开终端后
+nvm install 22
+nvm use 22
+nvm alias default 22</code></pre>
+<p>## 5. Git 与代理</p>
+<pre><code class="language-bash"># HTTPS 代理
+git config --global http.proxy http://127.0.0.1:7897
+git config --global https.proxy http://127.0.0.1:7897
+
+# 取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy</code></pre>
+<p>SSH 走代理需要在 <code>~/.ssh/config</code> 里单独配置（端口按你的客户端实际设置改）。</p>
+<p>## 6. 权限：<code>sudo</code> 与 <code>chmod</code></p>
+<ul>
+<li>macOS 对系统目录有保护，普通用户不能直接写入 <code>/usr/local</code>、<code>/Library</code> 等位置。</li>
+<li>安装到系统级位置时才用 <code>sudo</code>；Homebrew 安装的软件一般<strong>不需要</strong> <code>sudo</code>。</li>
+<li>脚本没有执行权限时：</li>
+</ul>
+<pre><code class="language-bash">chmod +x ./script.sh
+./script.sh</code></pre>
+<p>## 7. 自检清单</p>
+<pre><code class="language-bash">echo &quot;Shell: $SHELL&quot;
+git --version
+python3 --version
+node --version
+brew --version
+echo &quot;$PATH&quot; | tr ':' '\n'</code></pre>
+<p>## 和主教程的对应关系</p>
+<div class="table-wrap"><table><thead><tr><th></th><th></th><th>主</th><th>教</th><th>程</th><th>章</th><th>节</th><th></th><th>|</th><th></th><th>m</th><th>a</th><th>c</th><th>O</th><th>S</th><th></th><th>差</th><th>异</th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td>0</td><td>2</td><td></td><td>环</td><td>境</td><td>部</td><td>署</td><td>篇</td><td></td><td>·</td><td></td><td>G</td><td>i</td><td>t</td><td></td><td>|</td><td></td><td>用</td><td></td><td>H</td><td>o</td><td>m</td><td>e</td><td>b</td><td>r</td><td>e</td><td>w</td><td></td><td>装</td><td>，</td><td>代</td><td>理</td><td>命</td><td>令</td><td>相</td><td>同</td><td></td><td></td></tr><tr><td></td><td></td><td>0</td><td>2</td><td></td><td>环</td><td>境</td><td>部</td><td>署</td><td>篇</td><td></td><td>·</td><td></td><td>P</td><td>y</td><td>t</td><td>h</td><td>o</td><td>n</td><td></td><td>|</td><td></td><td>用</td><td></td><td>H</td><td>o</td><td>m</td><td>e</td><td>b</td><td>r</td><td>e</td><td>w</td><td></td><td>/</td><td></td><td>p</td><td>y</td><td>e</td><td>n</td><td>v</td><td>，</td><td>激</td><td>活</td><td>命</td><td>令</td><td>为</td><td></td><td>`</td><td>s</td><td>o</td><td>u</td><td>r</td><td>c</td><td>e</td><td></td><td>.</td><td>v</td><td>e</td><td>n</td><td>v</td><td>/</td><td>b</td><td>i</td><td>n</td><td>/</td><td>a</td><td>c</td><td>t</td><td>i</td><td>v</td><td>a</td><td>t</td><td>e</td><td>`</td><td></td><td></td></tr><tr><td></td><td></td><td>0</td><td>2</td><td></td><td>环</td><td>境</td><td>部</td><td>署</td><td>篇</td><td></td><td>·</td><td></td><td>N</td><td>o</td><td>d</td><td>e</td><td>.</td><td>j</td><td>s</td><td></td><td>|</td><td></td><td>用</td><td></td><td>n</td><td>v</td><td>m</td><td>，</td><td>`</td><td>.</td><td>z</td><td>s</td><td>h</td><td>r</td><td>c</td><td>`</td><td></td><td>而</td><td>非</td><td></td><td>P</td><td>o</td><td>w</td><td>e</td><td>r</td><td>S</td><td>h</td><td>e</td><td>l</td><td>l</td><td></td><td>P</td><td>r</td><td>o</td><td>f</td><td>i</td><td>l</td><td>e</td><td></td><td></td></tr><tr><td></td><td></td><td>0</td><td>2</td><td></td><td>环</td><td>境</td><td>部</td><td>署</td><td>篇</td><td></td><td>·</td><td></td><td>报</td><td>错</td><td>急</td><td>救</td><td></td><td>|</td><td></td><td>权</td><td>限</td><td>问</td><td>题</td><td>用</td><td></td><td>`</td><td>c</td><td>h</td><td>m</td><td>o</td><td>d</td><td>`</td><td></td><td>/</td><td></td><td>`</td><td>s</td><td>u</td><td>d</td><td>o</td><td>`</td><td>，</td><td>路</td><td>径</td><td>分</td><td>隔</td><td>符</td><td>是</td><td></td><td>`</td><td>/</td><td>`</td><td></td><td></td></tr></tbody></table></div>
+<hr>
+<p><a href="index.html">← 返回目录</a></p>
+
+<div class="pager"><a class="prev" href="11-资料库-进阶预备资源.html">← 资料库-进阶预备资源</a><a class="next" href="99-进阶篇（建设中）/index.html">README →</a></div>
+<footer>本页由 docs 下的 Markdown 自动生成 · <a href="https://github.com/yanwaiyue-name/xiaobai-to-dalao">查看源仓库</a></footer>
+</main>
+</div>
+</body>
+</html>

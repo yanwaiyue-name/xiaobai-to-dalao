@@ -100,7 +100,7 @@ flowchart LR
 
 ## 适配平台
 
-- **环境部署篇**：以 Windows 10 / 11 为第一视角，命令默认在 **PowerShell** 里执行（CMD 下部分写法不同，如 `$env:` 变量、虚拟环境激活命令，别直接照搬），macOS 用户可参考思路。
+- **环境部署篇**：以 Windows 10 / 11 为第一视角，命令默认在 **PowerShell** 里执行（CMD 下部分写法不同，如 `$env:` 变量、虚拟环境激活命令，别直接照搬）。macOS 的差异单独整理在 [macOS 环境配置补充](docs/12-macOS环境配置补充.md)。
 - **科学上网篇**：覆盖 Windows / macOS / 安卓 / iOS 四个平台，但详细安装教程以 Windows 为主。
 
 ## 姊妹项目（同账号出品）
@@ -108,7 +108,7 @@ flowchart LR
 | 项目 | 干什么的 |
 |---|---|
 | [airport-nav](https://github.com/yanwaiyue-name/airport-nav) | 机场导航：每周自动体检的机场入口列表 + 新手避坑指南 |
-| [agent-download](https://github.com/yanwaiyue-name/agent-download) | AI 客户端下载中心：40+ 款 AI 工具的官方下载地址整理 |
+| [agent-download](https://github.com/yanwaiyue-name/agent-download) | AI 客户端下载中心：47 款 AI 工具的官方下载地址整理 |
 
 ## 参与贡献
 
