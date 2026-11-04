@@ -5,7 +5,7 @@
 **A computer basics course for absolute beginners: proxy setup + development environment**
 
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Chapters](https://img.shields.io/badge/chapters-22-blue)](docs/)
+[![Documents](https://img.shields.io/badge/documents-22-blue)](docs/)
 
 **📖 Read online**: https://yanwaiyue-name.github.io/xiaobai-to-dalao/
 **中文**: [README.md](README.md)
@@ -30,7 +30,7 @@ docs/
 └── 99 进阶篇 (in progress)
 ```
 
-22 chapters total. Content is in Simplified Chinese.
+22 documents total (17 chapters + 5 appendices). Content is in Simplified Chinese.
 
 ## What makes a chapter usable
 
