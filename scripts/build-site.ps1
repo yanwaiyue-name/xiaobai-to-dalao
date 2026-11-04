@@ -516,6 +516,7 @@ function New-PageHtml([string]$Title, [string]$Body, [string]$SideNav, [string]$
     [void]$b.AppendLine("<style>" + $css + "</style>")
     [void]$b.AppendLine("</head>")
     [void]$b.AppendLine("<body>")
+    [void]$b.AppendLine("<script src=" + $Q + "https://yanwaiyue-name.github.io/yuese-nav/nav.js" + $Q + " data-site=" + $Q + "xiaobai-to-dalao" + $Q + " data-theme=" + $Q + "dark" + $Q + " data-max=" + $Q + "1180" + $Q + " defer></script>")
     [void]$b.AppendLine("<div class=" + $Q + "layout" + $Q + ">")
     [void]$b.AppendLine("<nav class=" + $Q + "side" + $Q + "><a class=" + $Q + "brand" + $Q + " href=" + $Q + $RootPrefix + "index.html" + $Q + ">📖 小白成为计算机大佬</a>" + $SideNav + "</nav>")
     [void]$b.AppendLine("<main>")
