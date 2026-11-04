@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -51,6 +51,21 @@ jobs:
             exit 1
           }
           Write-Host '站内链接校验通过'
+
+      # build-site.ps1 同时把产物同步到仓库内 html/（给没有 Pages 的镜像用）。
+      # 以前只在本地手动跑构建时才会更新 html/，CI 部署的 Pages 与仓库内站内版会漂移；
+      # 这里把生成物提交回去，保证两边始终一致。
+      - name: 同步站内版 html/
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- html
+          if git diff --cached --quiet; then
+            echo "html/ 已是最新"
+            exit 0
+          fi
+          git commit -m "chore: 同步站内版 html/"
+          git push
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

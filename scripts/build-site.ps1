@@ -390,7 +390,10 @@ function Split-Cells([string]$Row) {
     $c = $Row
     if ($c.StartsWith($PIPE)) { $c = $c.Substring(1) }
     if ($c.EndsWith($PIPE)) { $c = $c.Substring(0, $c.Length - 1) }
-    return @($c -split [char]124 | ForEach-Object { $_.Trim() })
+    # 注意：不能写 -split [char]124。PowerShell 的 -split 走正则，而 | 是正则的
+    # “或”运算符，会按空串切分，把整行拆成一个个字符（表格每格只剩一个字）。
+    # 必须把分隔符转义成字面量竖线。
+    return @($c -split [regex]::Escape([string][char]124) | ForEach-Object { $_.Trim() })
 }
 
 function New-SideNav([string]$ActiveRel, [string]$RootPrefix) {

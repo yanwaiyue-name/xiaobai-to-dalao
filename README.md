@@ -7,12 +7,12 @@
 > 网上的教程总默认你"已经会了"，这个仓库默认你"什么都不会"。
 > 每一章只回答三个问题：**装什么、怎么装、怎么确认装好了**。
 
-[![在线教程](https://img.shields.io/badge/📖_在线阅读-教程站-2ea44f?style=flat)](html/index.html) ![License](https://img.shields.io/badge/license-MIT-green) ![Platform](https://img.shields.io/badge/平台-Windows优先-blue) ![Chapters](https://img.shields.io/badge/章节-17篇-blue)
+[![在线教程](https://img.shields.io/badge/📖_在线阅读-教程站-2ea44f?style=flat)](html/index.html) ![License](https://img.shields.io/badge/license-MIT-green) ![Platform](https://img.shields.io/badge/平台-Windows优先-blue) ![Chapters](https://img.shields.io/badge/文档-22篇-blue)
 
 [English](README.en.md) ｜ **中文**
 
-> 📍 **本仓库是 GitHub 的镜像。** 站点构建与每周链接体检只在 GitHub Actions 运行，
-> 因此这里的内容可能滞后于 [GitHub 主仓库](https://github.com/yanwaiyue-name/xiaobai-to-dalao)。
+> 📍 **本仓库同步自上游主仓库。** 站点构建与每周链接体检只在 GitHub Actions 运行，
+> 因此其他镜像上的内容可能滞后。
 
 **在线阅读（选一个能打开的）：**
 
@@ -39,6 +39,8 @@
 - **01 科学上网篇**：从"VPN 是什么"讲到"客户端能用、故障会修、坑都避开"
 - **02 环境部署篇**：Git / Python / Node.js / Java / VS Code / Docker / MySQL，一个软件一章，照着做就能成
 - **99 进阶篇（建设中）**：Linux、云服务器、建站、AI 工具
+
+共 **22 篇文档**：17 章正文（01 篇 8 章 + 02 篇 9 章）+ 5 篇前言 / 附录 / 补充。
 
 ## 学习路线
 
