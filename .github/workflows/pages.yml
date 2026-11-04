@@ -6,6 +6,7 @@ on:
     paths:
       - 'docs/**'
       - 'README.md'
+      - 'README.en.md'
       - 'scripts/build-site.ps1'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
