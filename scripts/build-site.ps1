@@ -168,6 +168,10 @@ function Convert-Inline([string]$Text) {
 
     $work = ConvertTo-HtmlText ($sb.ToString())
 
+    # 图片：![alt](src)。必须先于链接处理，否则 [![徽章](图)](链接)
+    # 会被链接扫描器拆成 "![徽章" + 一段坏 HTML。
+    $work = Convert-Images $work
+
     # 链接：[文本](地址)。手工扫描，避免正则转义问题
     $work = Convert-Links $work
 
@@ -179,6 +183,39 @@ function Convert-Inline([string]$Text) {
         $work = $work.Replace($token, "<code>" + (ConvertTo-HtmlText ([string]$codes[$k])) + "</code>")
     }
     return $work
+}
+
+function Convert-Images([string]$Text) {
+    # 手工扫描 ![alt](src)，理由同 Convert-Links：避免多层转义。
+    if ([string]::IsNullOrEmpty($Text)) { return "" }
+
+    $sb = New-Object System.Text.StringBuilder
+    $i = 0
+    $n = $Text.Length
+
+    while ($i -lt $n) {
+        if ($Text[$i] -eq [char]33 -and ($i + 1) -lt $n -and $Text[$i + 1] -eq [char]91) {
+            $close = $Text.IndexOf([char]93, $i + 2)
+            if ($close -gt $i -and ($close + 1) -lt $n -and $Text[$close + 1] -eq [char]40) {
+                $end = $Text.IndexOf([char]41, $close + 2)
+                if ($end -gt $close) {
+                    $alt = $Text.Substring($i + 2, $close - $i - 2)
+                    $src = $Text.Substring($close + 2, $end - $close - 2)
+                    $fixed = Rewrite-Href $src
+                    [void]$sb.Append("<img src=").Append($Q).Append($fixed).Append($Q)
+                    [void]$sb.Append(" alt=").Append($Q).Append($alt).Append($Q)
+                    [void]$sb.Append(" loading=").Append($Q).Append("lazy").Append($Q).Append(">")
+                    $i = $end + 1
+                    continue
+                }
+            }
+        }
+
+        [void]$sb.Append($Text[$i])
+        $i++
+    }
+
+    return $sb.ToString()
 }
 
 function Convert-Links([string]$Text) {
@@ -236,6 +273,9 @@ function Convert-Markdown([string[]]$Lines) {
 
     while ($i -lt $Lines.Count) {
         $trim = $Lines[$i].Trim()
+
+        # README 顶部的裸 HTML 只用于 GitHub 居中；站点里不能把标签当正文显示。
+        if ($trim -eq '<div align="center">' -or $trim -eq '</div>') { $i++; continue }
 
         # 代码块
         if ($trim.StartsWith($fence)) {
