@@ -61,6 +61,20 @@ jobs:
         if: success()
         run: echo "全部链接存活，本次体检通过 ✅"
 
+      - name: 体检通过 → 关闭已恢复的 Issue
+        # 之前只开不关：链接修好后旧 issue 会一直挂着，列表变垃圾桶
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          title="🔗 每周链接体检：发现失效链接，需要人工确认"
+          nums=$(gh issue list --state open --limit 100 --json number,title \
+            --jq ".[] | select(.title == \"$title\") | .number")
+          for n in $nums; do
+            gh issue comment "$n" --body "本次体检全部通过（403/429 反爬已按约定排除），自动关闭。"
+            gh issue close "$n" --reason completed
+          done
+
       - name: 发现死链 → 汇报 Issue（已有同名 Issue 则追加评论，不重复开）
         if: failure()
         env:
